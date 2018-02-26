@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/oysterhut.iml" filepath="$PROJECT_DIR$/oysterhut.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../oysterhut/oysterhut-admin/oysterhut-admin.iml" filepath="$PROJECT_DIR$/../oysterhut/oysterhut-admin/oysterhut-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../oysterhut/oysterhut-web/oysterhut-web.iml" filepath="$PROJECT_DIR$/../oysterhut/oysterhut-web/oysterhut-web.iml" />
+    </modules>
+  </component>
+</project>
