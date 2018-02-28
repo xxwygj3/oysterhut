@@ -12,7 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="oysterhut" target="1.5" />
-      <module name="oysterhut-admin" target="1.5" />
+      <module name="oysterhut-admin" target="1.8" />
       <module name="oysterhut-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>

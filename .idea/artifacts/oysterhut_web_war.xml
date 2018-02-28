@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="oysterhut-web:war">
+    <output-path>$PROJECT_DIR$/../oysterhut/oysterhut-web/target</output-path>
+    <root id="archive" name="oysterhut-web-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="oysterhut-web:war exploded" />
+    </root>
+  </artifact>
+</component>
