@@ -7,12 +7,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="oysterhut-admin" />
+        <module name="oysterhut-common" />
+        <module name="oysterhut-db" />
         <module name="oysterhut-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="oysterhut" target="1.5" />
+      <module name="oysterdatabase" target="1.8" />
+      <module name="oysterhut" target="1.8" />
       <module name="oysterhut-admin" target="1.8" />
+      <module name="oysterhut-common" target="1.8" />
+      <module name="oysterhut-db" target="1.8" />
       <module name="oysterhut-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
