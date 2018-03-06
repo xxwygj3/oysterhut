@@ -74,7 +74,7 @@ public class MyDES {
     }
 
     public static void main(String[] args) {
-        String str = "123456haiqin";
+        String str = "123123hutadmin";
         // DES数据加密
         String s1 = encryptBasedDes(str);
         System.out.println(s1);

@@ -2,65 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ME牡蛎小屋后台管理系统--登录</title>
+    <title>ME牡蛎小屋后台管理系统&#45;&#45;登录</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="shortcut icon" href="/img/face_head.ico">
+    <script src="js/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/ctrl/loginCtrl.js"></script>
 </head>
 <body style="background-color:#00c0ff;">
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12">
-                <div style="color:#ffffff;font-size: 50px;">ME牡蛎小屋后台管理系统</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12" style="text-align: center;">
+            <img src="img/login.jpg"/>
+        </div>
+        <div class="span12"
+             style="border:1px solid #000;margin-left: 0px;margin-top: -500px;color: #ffffff;text-align: center;">
+            <div class="span4" style="border:1px solid red;margin-left: 50%;">
+                <h3>用户登录</h3>
+                <div id="erro" style="color:red;"></div>
                 <form>
                     <p>
-                        账号：<input type="text" name="username" id="username" value="admin" />
+                        账号：<input type="text" name="username" id="username" value="admin"/>
                     </p>
                     <p>
-                        密码：<input type="text" name="password" id="password" value="123" />
+                        密码：<input type="text" name="password" id="password" value="123"/>
+                    </p>
+                    <p style="margin-left: -15px;">
+                        验证码：<input type="text" name="vcode" id="vcode" value="post" style="width: 60px;"/>
+                        <img id="vcodeImg" src="" style="margin-top: -10px;"/>
                     </p>
                     <p>
-                        <input type="button" id="ajaxLogin" value="登录" />
+                        <input type="button" id="ajaxLogin" value="登录"/>
                     </p>
                 </form>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
-<!--
-<%@ page language="java" contentType="text/html; charset=utf-8"
-pageEncoding="utf-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme() + "://"
-+ request.getServerName() + ":" + request.getServerPort()
-+ path;
-%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <script type="text/javascript"
-            src="js/jquery.js"></script>
-    <title>登录</title>
-</head>
-<body>
-错误信息：
-<h4 id="erro"></h4>
-
-</body>
-<script>
-    var username = $("#username").val();
-    var password = $("#password").val();
-    $("#ajaxLogin").click(function() {
-        $.post("/ajaxLogin", {
-            "username" : username,
-            "password" : password
-        }, function(result) {
-            if (result.status == 200) {
-                location.href = "/index";
-            } else {
-                $("#erro").html(result.message);
-            }
-        });
-    });
-</script>
-</html>-->
