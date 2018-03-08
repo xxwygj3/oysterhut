@@ -3,7 +3,7 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/oysterhut-admin" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/config/LoginInterceptor.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/LoginController.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/oysterhut-common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/oysterhut-db" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/oysterhut-web" charset="UTF-8" />
