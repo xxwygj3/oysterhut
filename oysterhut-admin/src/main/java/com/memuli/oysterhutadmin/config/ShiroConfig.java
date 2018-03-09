@@ -38,11 +38,6 @@ public class ShiroConfig {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         // 必须设置 SecurityManager
         shiroFilterFactoryBean.setSecurityManager(securityManager);
-        Map<String, Filter> filters = new LinkedHashMap<String, Filter>();
-        LogoutFilter logoutFilter = new LogoutFilter();
-        logoutFilter.setRedirectUrl("/login");
-        filters.put("logout", logoutFilter);
-        shiroFilterFactoryBean.setFilters(filters);
 
         // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
         shiroFilterFactoryBean.setLoginUrl("/login.html");
@@ -54,13 +49,14 @@ public class ShiroConfig {
         Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String,String>();
         // 配置不会被拦截的链接 顺序判断
         filterChainDefinitionMap.put("/bootstrap/**", "anon");
+        filterChainDefinitionMap.put("/components/**", "anon");
         filterChainDefinitionMap.put("/img/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/getJpgCode", "anon");
         filterChainDefinitionMap.put("/loginIn", "anon");
 //        filterChainDefinitionMap.put("/login.html", "anno");这行需注释否则报错
         // 配置退出过滤器,其中的具体的退出代码Shiro已经替我们实现了
-        filterChainDefinitionMap.put("/logout", "logout");
+        filterChainDefinitionMap.put("/logout", "anon");
 //        filterChainDefinitionMap.put("/index.html", "authc");
 //        filterChainDefinitionMap.put("/add", "perms[权限添加]");
         // <!-- 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;

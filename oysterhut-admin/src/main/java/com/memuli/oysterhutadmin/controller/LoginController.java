@@ -5,12 +5,16 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -58,6 +62,26 @@ public class LoginController {
             resultMap.put("message",e.getMessage());
         }
         LOGGER.info("LoginController.loginIn (登录) Response parameter:"+ JSONObject.fromObject(resultMap).toString());
+        return resultMap;
+    }
+
+    @GetMapping("/logout")
+    public Map<String, Object> logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        LOGGER.info("LoginController.logout (退出) Request Parameters:");
+        Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
+        try {
+            Subject subject = SecurityUtils.getSubject();
+            System.out.println("是否已经登陆验证通过了："+SecurityUtils.getSubject().isAuthenticated());
+            if(subject.isAuthenticated()){
+                subject.logout();//退出
+            }
+            resultMap.put("status",200);
+            resultMap.put("message","退出成功");
+        } catch (Exception e) {
+            resultMap.put("status",500);
+            resultMap.put("message",e.getMessage());
+        }
+        LOGGER.info("LoginController.logout (退出) Response parameter:"+ JSONObject.fromObject(resultMap).toString());
         return resultMap;
     }
 }

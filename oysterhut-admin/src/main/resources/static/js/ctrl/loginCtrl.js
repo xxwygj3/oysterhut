@@ -30,9 +30,9 @@ $(function () {
         });
     });
     var random = Math.random();
-    $("#vcodeImg").attr("src", '/getJpgCode?'+random);
-    $("#changeImgA").click(function (){
+    $("#vcodeImg").attr("src", '/getJpgCode?' + random);
+    $("#changeImgA").click(function () {
         random = Math.random();
-        $("#vcodeImg").attr("src", '/getJpgCode?'+random);
+        $("#vcodeImg").attr("src", '/getJpgCode?' + random);
     });
 });
