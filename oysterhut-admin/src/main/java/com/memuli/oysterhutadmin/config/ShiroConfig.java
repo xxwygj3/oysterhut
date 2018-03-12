@@ -52,6 +52,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/components/**", "anon");
         filterChainDefinitionMap.put("/img/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
+//        filterChainDefinitionMap.put("/webuploader/**", "anon");
         filterChainDefinitionMap.put("/getJpgCode", "anon");
         filterChainDefinitionMap.put("/loginIn", "anon");
 //        filterChainDefinitionMap.put("/login.html", "anno");这行需注释否则报错
