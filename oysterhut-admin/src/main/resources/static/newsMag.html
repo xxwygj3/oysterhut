@@ -6,7 +6,7 @@
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="shortcut icon" href="/img/face_head.ico">
     <script src="js/ctrl/commonJS.js"></script>
-    <script src="js/ctrl/indexCtrl.js"></script>
+    <script src="js/ctrl/newsMagCtrl.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -91,15 +91,20 @@
                         <div class="control-group">
                             <label class="control-label" for="news_img_url">缩略图：</label>
                             <div class="controls">
-                                <input id="news_img_url" type="file" class="form-control" onchange="previewFile(this);" />
+                                <input id="news_img_url" type="file" class="form-control" onchange="previewImage(this);" />
                             </div>
                         </div>
                         <div class="control-group">
-                            <div class="controls">
-                                <img id="news_img_url_preview" src="" height="50" alt="">
+                            <div class="controls" id="preview_image_div" style="display: none;width: 220px;height: 100px;">
+                                <img src="" alt="" style="display: none;width: 220px;height: 100px;">
                             </div>
                         </div>
+                        <div class="control-group">
+                            <label class="control-label" for="news_img_url">内容：</label>
+                            <div class="controls">
 
+                            </div>
+                        </div>
 
                         <div class="control-group">
                             <label class="control-label" for="news_create_time">创建时间：</label>
