@@ -49,10 +49,11 @@ public class ShiroConfig {
         Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String,String>();
         // 配置不会被拦截的链接 顺序判断
         filterChainDefinitionMap.put("/bootstrap/**", "anon");
+        filterChainDefinitionMap.put("/ckeditor/**", "anon");
         filterChainDefinitionMap.put("/components/**", "anon");
         filterChainDefinitionMap.put("/img/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
-//        filterChainDefinitionMap.put("/webuploader/**", "anon");
+//        filterChainDefinitionMap.put("/fileinput/**", "anon");
         filterChainDefinitionMap.put("/getJpgCode", "anon");
         filterChainDefinitionMap.put("/loginIn", "anon");
 //        filterChainDefinitionMap.put("/login.html", "anno");这行需注释否则报错

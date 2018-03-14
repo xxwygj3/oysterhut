@@ -21,10 +21,10 @@
                 <h3 style="margin-left: 100px;">用户登录</h3>
                 <form autocomplete="off" novalidate="true">
                     <p>
-                        用户名：<input type="text" name="username" id="username" pattern="" placeholder="请输入用户名" value="" autofocus required/>
+                        用户名：<input type="text" name="username" id="username" pattern="" placeholder="请输入用户名" value="hutadmin" autofocus required/>
                     </p>
                     <p>
-                        密&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" id="password" pattern="" placeholder="请输入密码" value="" required/>
+                        密&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" id="password" pattern="" placeholder="请输入密码" value="123123" required/>
                     </p>
                     <p>
                         验证码：<input type="text" name="vcode" id="vcode" pattern="" min="4" max="4" placeholder="验证码" value="" style="width: 60px;" required/>
@@ -33,7 +33,7 @@
                     </p>
                     <p>
                         <span id="erro" style="width: 226px;color: brown;display: inline-block;text-align: right;font-weight: bold;"></span>
-                        <input type="button" id="checkForm" value="登录"/>
+                        <input type="button" id="checkForm" onclick="login();" value="登录"/>
                     </p>
                 </form>
             </div>
