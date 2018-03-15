@@ -49,6 +49,7 @@ public class ShiroConfig {
         Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String,String>();
         // 配置不会被拦截的链接 顺序判断
         filterChainDefinitionMap.put("/bootstrap/**", "anon");
+        filterChainDefinitionMap.put("/bootstraptable/**", "anon");
         filterChainDefinitionMap.put("/ckeditor/**", "anon");
         filterChainDefinitionMap.put("/components/**", "anon");
         filterChainDefinitionMap.put("/img/**", "anon");
