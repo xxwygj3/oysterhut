@@ -3,21 +3,22 @@ package com.memuli.oysterhutadmin.controller;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.memuli.oysterhutadmin.entity.HutNews;
 import com.memuli.oysterhutadmin.service.HutNewsService;
+import com.memuli.oysterhutadmin.util.AjaxResult;
+import com.memuli.oysterhutadmin.util.ReqData;
 import com.memuli.oysterhutadmin.util.RespData;
 import com.memuli.oysterhutadmin.util.ResultInfo;
+import com.memuli.oysterhutdb.bo.News;
 import net.sf.json.JSONObject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -29,7 +30,7 @@ public class NewsController {
 
     @GetMapping("/news/all")
     public RespData allNews(Page<HutNews> page){
-        LOGGER.info("NewsController.addNews (新增新闻) Request Parameters:");
+        LOGGER.info("NewsController.addNews (新增新闻) Request Parameters:"+JSONObject.fromObject(page).toString());
         RespData respData = new RespData();
         try {
 //            Page<HutNews> hutNewsPage=new Page<HutNews>(1,10);
@@ -64,4 +65,20 @@ public class NewsController {
 //        LOGGER.info("NewsController.addNews (新增新闻) Response parameter:"+ JSONObject.fromObject(resultMap).toString());
 //        return resultMap;
 //    }
+
+    @GetMapping("/news/getNewsList")
+    public AjaxResult getUserList() {
+        Page<HutNews> page = new Page<HutNews>();
+        page = hutNewsService.selectPage(page, null);
+
+        Map<String, Object> resObj = new HashMap<String, Object>();
+        resObj.put("total", page.getTotal());
+        resObj.put("rows", page.getRecords());
+
+        return json(resObj);
+    }
+
+    public AjaxResult json(Object data) {
+        return new AjaxResult().success(data);
+    }
 }
