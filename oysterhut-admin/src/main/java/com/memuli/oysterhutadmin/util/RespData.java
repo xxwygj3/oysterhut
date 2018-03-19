@@ -4,10 +4,6 @@ import com.memuli.oysterhutcommon.BaseEntity;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- *
- * @param <T>
- */
 public class RespData extends BaseEntity {
     private static final long serialVersionUID = 1L;
 

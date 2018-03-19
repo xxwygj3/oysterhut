@@ -1,8 +1,4 @@
 $(function () {
-    //隐藏Modal
-    //$("#myModal").modal('hide');
-    //loadNews();
-
     //1.初始化Table
     var oTable = new TableInit();
     oTable.Init();
@@ -68,6 +64,7 @@ var dataColumns = [
     }
 ]
 
+//查询参数
 function dataQueryParams(params) {
     return {
         _size: params.limit,  //页面大小
@@ -89,19 +86,21 @@ function formatDate(time) {
     return year + "年" + month + "月" + date + "日 " + hour + ":" + minute + ":" + second;
 }
 
+//全局
+var list = undefined;
 var TableInit = function () {
     var oTableInit = new Object();
     //初始化Table
     oTableInit.Init = function () {
         $('#table_server').bootstrapTable({
-            method: 'post',
+            method: 'get',
             url: dataUrl,
             dataType: "json",
             striped: true,     //使表格带有条纹
             pagination: true,    //在表格底部显示分页工具栏
             pageSize: 10,
             pageNumber: 1,
-            pageList: [10, 20, 50, 100, 200, 500],
+            pageList: [10],
             idField: "id",  //标识哪个字段为id主键
             showToggle: false,   //名片格式
             cardView: false,//设置为True时显示名片（card）布局
@@ -131,140 +130,24 @@ var TableInit = function () {
                 //window.location.href = "/qStock/qProInfo/" + row.ProductId;
             },
             responseHandler: function (res) {
-                if (res.code == 1) {
+                if (res.resultInfo.status == 200) {
+                    list = res.resultMap.rows;
                     return {
-                        "total": res.data.total,//总页数
-                        "rows": res.data.rows   //数据
+                        "total": res.resultMap.total,//总页数
+                        "rows": res.resultMap.rows   //数据
                     };
-
+                } else {
+                    alert(res.resultInfo.message);
                 }
             }
         });
-
     };
-
     //得到查询的参数
     oTableInit.queryParams = function (params) {
         return dataQueryParams(params);
     };
     return oTableInit;
 };
-
-//分页加载新闻
-// function loadNews() {
-//     $.get("/news/all", {}, function (result) {
-//         if (result.status == 200) {
-//             var dataList = result.page;
-//             $("#renderTbody").html($("#newsList").render(dataList));
-//         } else {
-//             alert(result.message);
-//         }
-//     });
-// }
-
-// function loadNews() {
-//     var page ={current:1,size:5};
-//     $.get("/news/all",page,function (result) {
-//         if(result.resultInfo.status == 200){
-//             var datalist = result.resultMap.newsList;
-//             list = datalist.records;
-//             $("#table_server").bootstrapTable({
-//                 url: '/news/all',
-//                 method: 'get',
-//                 data:datalist.records,
-//                 dataType: "json",
-//                 data_local: "zh-US",//表格汉化
-//                 cache: false,//是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
-//                 striped: true,//设置为 true 会有隔行变色效果
-//                 undefinedText: "",//当数据为 undefined 时显示的字符
-//
-//                 pagination: true, //分页
-//                 // paginationLoop:true,//设置为 true 启用分页条无限循环的功能。
-//                 showToggle: "true",//是否显示 切换试图（table/card）按钮
-//                 showColumns: "true",//是否显示 内容列下拉框
-//                 pageNumber: 1,//如果设置了分页，首页页码
-//                 // showPaginationSwitch:true,//是否显示 数据条数选择框
-//                 pageSize: 5,//如果设置了分页，页面数据条数
-//                 pageList: [5, 10, 20, 40],  //如果设置了分页，设置可供选择的页面数据条数。设置为All 则显示所有记录。
-//                 paginationPreText: '‹',//指定分页条中上一页按钮的图标或文字,这里是<
-//                 paginationNextText: '›',//指定分页条中下一页按钮的图标或文字,这里是>
-//                 // singleSelect: false,//设置True 将禁止多选
-//                 search: false, //显示搜索框
-//                 data_local: "zh-US",//表格汉化
-//                 sidePagination: "server", //服务端处理分页
-//                 queryParams: function (params) {//自定义参数，这里的参数是传给后台的，我这是是分页用的
-//                     return {//这里的params是table提供的
-//                         offset: params.offset,//从数据库第几条记录开始
-//                         size: params.limit//找多少条
-//                     };
-//                 },
-//                 idField: "id",//指定主键列
-//                 columns: [
-//                     {
-//                         title: '新闻编号',//表的列名
-//                         field: 'id',//json数据中rows数组中的属性名
-//                         align: 'center'//水平居中
-//                     },
-//                     {
-//                         title: '新闻标题',
-//                         field: 'title',
-//                         align: 'center'
-//                     },
-//                     {
-//                         title: '新闻缩略图',
-//                         field: 'imgUrl',
-//                         align: 'center',
-//                         formatter: function (value, row, index){
-//                             return '<img src="'+row.imgUrl+'" style="width:200px;height: 50px;"/>';
-//                         }
-//                     },
-//                     {
-//                         title: '创建时间',
-//                         field: 'createTime',
-//                         align: 'center',
-//                         formatter: function (value, row, index){
-//                             var dateVal = row.createTime;
-//                             var date = new Date(dateVal);
-//                             var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
-//                             var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-//                             var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
-//                             var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
-//                             var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
-//                             return date.getFullYear() + "-" + month + "-" + currentDate + " " + hours + ":" + minutes + ":" + seconds;
-//                         }
-//                     },
-//                     {
-//                         title:'新闻排序',
-//                         field:'displayOrder',
-//                         align:'center',
-//                     },
-//                     {
-//                         title: '状态',
-//                         field: 'state',
-//                         align: 'center',
-//                         formatter: function (value, row, index) {//自定义显示，这三个参数分别是：value该行的属性，row该行记录，index该行下标
-//                             return row.state == 8 ? "显示" : "关闭";
-//                         }
-//
-//                     },
-//                     {
-//                         title: '操作',
-//                         field: 'id',
-//                         align: 'center',
-//                         formatter: function (value, row, index) {
-//                             return '<button class="btn btn-primary btn-lg" data-toggle="modal" data-zdy="'+row.id+'" id="modalid'+row.id+'" onclick="showModel(1,'+index+');">编辑</button> ';
-//                         }
-//                     }
-//                 ]
-//             }).on('load-success.bs.table', function (data) {//table加载成功后的监听函数
-//                 console.log("load success");
-//                 $(".pull-right").css("display", "block");
-//             });
-//         }
-//     })
-// }
-//全局
-var list = undefined;
 
 //modal显示
 function showModel(operation, index) {
@@ -293,7 +176,6 @@ function showModel(operation, index) {
     } else {
         clearForm();
     }
-
     $("#myModal").modal();
 }
 
