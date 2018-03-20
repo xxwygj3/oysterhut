@@ -23,8 +23,10 @@
                     <small>所有新闻</small>
                 </h1>
             </div>
-            <button class="btn btn-primary btn-lg" data-toggle="modal" data-zdy="" id="modalid0" onclick="showModel(0,'');">创建新的新闻</button>
-            <table id="table_server" ></table>
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-zdy="" id="modalid0"
+                    onclick="showModel(0,'');">创建新的新闻
+            </button>
+            <table id="table_server"></table>
 
             <div id="myModal" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel"
                  aria-hidden="true">
@@ -80,6 +82,12 @@
                                 <input id="news_id" type="hidden" value="1"/>
                             </div>
                         </div>
+                        <div class="control-group" style="display: none;">
+                            <label class="control-label" for="news_id">编号：</label>
+                            <div class="controls">
+                                <input id="news_id" type="hidden" value="1"/>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -90,21 +98,5 @@
         </div>
     </div>
 </div>
-<script type="text/x-jsrender" id="newsList">
-{{for records}}
-    {{if #index % 2 === 0}}
-        <tr class="info">
-    {{else}}
-        <tr class="success">
-    {{/if}}
-        <td>{{:title}}</td>
-        <td><img src={{:imgUrl}} style="width:200px;height: 50px;"/></td>
-        <td>{{:createTime}}</td>-->
-        <td>{{:state}}</td>
-        <td><a href="#modal-container-1" role="button" class="btn" data-toggle="modal">编辑</a></td>
-       </tr>
-{{/for}}
-
-</script>
 </body>
 </html>

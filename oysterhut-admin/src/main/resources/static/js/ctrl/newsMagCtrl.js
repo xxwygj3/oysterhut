@@ -30,14 +30,6 @@ var dataColumns = [
         align: 'center',
         formatter: function (value, row, index) {
             return formatDate(row.createTime);
-            // var dateVal = row.createTime;
-            // var date = new Date(dateVal);
-            // var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
-            // var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-            // var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
-            // var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
-            // var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
-            // return date.getFullYear() + "-" + month + "-" + currentDate + " " + hours + ":" + minutes + ":" + seconds;
         }
     },
     {
@@ -105,9 +97,9 @@ var TableInit = function () {
             showToggle: false,   //名片格式
             cardView: false,//设置为True时显示名片（card）布局
             showColumns: true, //显示隐藏列
-            showRefresh: true,  //显示刷新按钮
+            showRefresh: false,  //显示刷新按钮
             singleSelect: true,//复选框只能选择一条记录
-            search: false,//是否显示右上角的搜索框
+            search: false,//是否显示右上角的搜索框，此搜索是客户端搜索，不会进服务端
             clickToSelect: true,//点击行即可选中单选/复选框
             sidePagination: "server",//表格分页的位置
             queryParamsType: "limit", //参数格式,发送标准的RESTFul类型的参数请求
@@ -137,7 +129,11 @@ var TableInit = function () {
                         "rows": res.resultMap.rows   //数据
                     };
                 } else {
-                    alert(res.resultInfo.message);
+                    list = [];
+                    return {
+                        "total": 0,//总页数
+                        "rows": []   //数据
+                    };
                 }
             }
         });
@@ -148,9 +144,11 @@ var TableInit = function () {
     };
     return oTableInit;
 };
+var optType = undefined;
 
 //modal显示
 function showModel(operation, index) {
+    optType = operation;
     if (operation == 0) {
         $("#myModalLabel").html("新建新闻");
     } else {
@@ -214,7 +212,6 @@ function clearForm() {
 
 //提交表单
 function submitForm() {
-    alert("ok");
     var title = $("#news_title").val();
     var state = $("[name='news_state']:checked").val();
     var order = $("#news_display_order").val();
@@ -224,20 +221,55 @@ function submitForm() {
         return false;
     }
     // js 获取文件对象
+    var id = $("#news_id").val();
     var fileObj = document.getElementById("news_img_url").files[0];
-    $.post("/news/add", {
-        "title": title,
-        "state": state,
-        "order": order,
-        "newsfile": fileObj,
-        "content": content
-    }, function (result) {
-        if (result.status == 200) {
-            alert(result.message);
-        } else {
-            alert(result.message);
+    var param = new FormData();
+    param.append("optType", optType);
+    param.append("title", title);
+    param.append("state", state);
+    param.append("order", order);
+    param.append("content", content);
+    if (optType == 0) {
+        param.append("newsfile", fileObj);
+        param.append("id", null);
+    } else {
+        if (fileObj != undefined) {
+            param.append("newsfile", fileObj);
         }
-    });
+        param.append("id", id);
+    }
+    $.ajax(
+        {
+            url: "/news/addAndUpdateNews",
+            contentType: "application/json;charset=UTF-8",
+            type: "POST",
+            data: param,
+            dataType: "json",
+            contentType: false,// 告诉jQuery不要去设置Content-Type请求头
+            processData: false,// 告诉jQuery不要去处理发送的数据
+            beforeSend:function(){
+                console.log("正在进行，请稍候");
+            },
+            success: function (result) {
+                if (res.resultInfo.status == 200) {
+                    alert(result.message);
+                } else {
+                    alert(result.message);
+                }
+            },
+            error : function(result) {
+                alert("请求失败，请稍后再试");
+            }
+        }
+    );
+    // $.post("/news/addAndUpdateNews", param, function (result) {
+    //     if (result.status == 200) {
+    //         alert(result.message);
+    //     } else {
+    //         alert(result.message);
+    //     }
+    // });
+    return false;
 }
 
 //检查表单非空项

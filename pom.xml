@@ -22,6 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <com.google.guava.version>15.0</com.google.guava.version>
 
         <oysterhut-common.version>[0.0.1-SNAPSHOT]</oysterhut-common.version>
         <oysterhut-db.version>[0.0.1-SNAPSHOT]</oysterhut-db.version>
@@ -59,6 +60,11 @@
                 <artifactId>json-lib</artifactId>
                 <version>2.4</version>
                 <classifier>jdk15</classifier>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${com.google.guava.version}</version>
             </dependency>
 
             <dependency>

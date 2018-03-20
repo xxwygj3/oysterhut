@@ -4,10 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/oysterhut.iml" filepath="$PROJECT_DIR$/oysterhut.iml" />
       <module fileurl="file://$PROJECT_DIR$/oysterhut-admin/oysterhut-admin.iml" filepath="$PROJECT_DIR$/oysterhut-admin/oysterhut-admin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oysterhut-admin/oysterhut-admin.iml" filepath="$PROJECT_DIR$/oysterhut-admin/oysterhut-admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/oysterhut-common/oysterhut-common.iml" filepath="$PROJECT_DIR$/oysterhut-common/oysterhut-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/oysterhut-db/oysterhut-db.iml" filepath="$PROJECT_DIR$/oysterhut-db/oysterhut-db.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oysterhut-web/oysterhut-web.iml" filepath="$PROJECT_DIR$/oysterhut-web/oysterhut-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/oysterhut-web/oysterhut-web.iml" filepath="$PROJECT_DIR$/oysterhut-web/oysterhut-web.iml" />
     </modules>
   </component>

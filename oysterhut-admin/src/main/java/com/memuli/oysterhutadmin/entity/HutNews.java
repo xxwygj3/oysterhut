@@ -3,6 +3,7 @@ package com.memuli.oysterhutadmin.entity;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -72,7 +73,7 @@ public class HutNews extends Model<HutNews> {
      * 来源描述
      */
     @TableField(value = "source_desc")
-    private String source_desc;
+    private String sourceDesc;
 
     /**
      * 指定主键
@@ -186,11 +187,11 @@ public class HutNews extends Model<HutNews> {
         this.sourceType = sourceType;
     }
 
-    public String getSource_desc() {
-        return source_desc;
+    public String getSourceDesc() {
+        return sourceDesc;
     }
 
-    public void setSource_desc(String source_desc) {
-        this.source_desc = source_desc;
+    public void setSourceDesc(String sourceDesc) {
+        this.sourceDesc = sourceDesc;
     }
 }

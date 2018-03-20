@@ -51,6 +51,10 @@
             <artifactId>druid</artifactId>
             <version>1.0.29</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
