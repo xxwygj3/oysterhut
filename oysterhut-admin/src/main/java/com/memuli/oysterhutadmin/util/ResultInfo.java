@@ -4,7 +4,7 @@ public class ResultInfo {
     /**
      * 结果代码
      **/
-    private Integer status;
+    private String status;
     /**
      * 结果信息
      **/
@@ -13,16 +13,16 @@ public class ResultInfo {
     public ResultInfo() {
     }
 
-    public ResultInfo(Integer status, String message) {
+    public ResultInfo(String status, String message) {
         this.status = status;
         this.message = message;
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

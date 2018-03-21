@@ -1,20 +1,28 @@
 package com.memuli.oysterhutadmin.controller;
 
 import com.memuli.oysterhutadmin.util.Captcha;
-import org.apache.shiro.SecurityUtils;
+import com.memuli.oysterhutadmin.util.MessageSourceAccessor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 /**
  * 启动到登录页面
  */
 @RestController
 public class InitController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(InitController.class);
+    @Autowired
+    private MessageSourceAccessor msa;
+    /**
+     * 域名访问重定向到登录页面
+     */
     @GetMapping("/")
     public ModelAndView tologinHtml() {
         return new ModelAndView("/login.html");
@@ -25,6 +33,7 @@ public class InitController {
      */
     @GetMapping(value="/getJpgCode")
     public void getJpgCode(HttpServletRequest request,HttpServletResponse response){
+        LOGGER.info("InitController.getJpgCode (获取验证码) Request Parameters:开始");
         try {
             response.setHeader("Pragma", "No-cache");
             response.setHeader("Cache-Control", "no-cache");
@@ -35,8 +44,9 @@ public class InitController {
             //输出
             captcha.out(response.getOutputStream(),request);
         } catch (Exception e) {
-            System.err.println("获取验证码异常："+e.getMessage());
+            LOGGER.error("InitController.getJpgCode (获取验证码) Exception",e);
         }
+        LOGGER.info("InitController.getJpgCode (获取验证码) Response Parameters:结束");
     }
 
 }

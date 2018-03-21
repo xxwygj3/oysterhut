@@ -1,5 +1,6 @@
 package com.memuli.oysterhutadmin.shiro;
 
+import com.memuli.oysterhutadmin.controller.NewsController;
 import com.memuli.oysterhutadmin.entity.SysPermission;
 import com.memuli.oysterhutadmin.entity.SysRole;
 import com.memuli.oysterhutadmin.entity.SysUser;
@@ -7,18 +8,22 @@ import com.memuli.oysterhutadmin.service.SysPermissionService;
 import com.memuli.oysterhutadmin.service.SysRoleService;
 import com.memuli.oysterhutadmin.service.SysUserService;
 import com.memuli.oysterhutadmin.util.MyDES;
+import com.memuli.oysterhutadmin.util.MyMD5;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;
 
 //shiro身份校验核心类
 public class MyShiroRealm extends AuthorizingRealm {
+    private static final Logger LOGGER = LoggerFactory.getLogger(NewsController.class);
     @Autowired
     private SysUserService sysUserService;
     @Autowired
@@ -29,7 +34,7 @@ public class MyShiroRealm extends AuthorizingRealm {
     //认证信息.(身份验证) : Authentication 是用来验证用户身份
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        System.out.println("身份认证方法：MyShiroRealm.doGetAuthenticationInfo()");
+        LOGGER.info("MyShiroRealm.doGetAuthenticationInfo (身份认证方法)：开始");
 
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         String name = token.getUsername();
@@ -38,8 +43,10 @@ public class MyShiroRealm extends AuthorizingRealm {
         map.put("nickname", name);
         //密码进行加密处理  明文为  password+name
         String paw = password + name;
-        String pawDES = MyDES.encryptBasedDes(paw);
-        map.put("pswd", pawDES);
+        //String pawDES = MyDES.encryptBasedDes(paw);
+        //map.put("pswd", pawDES);
+        String pawMD5 =MyMD5.md5Sign(MyMD5.md5Sign(paw));//规则md5(md5(password+name))
+        map.put("pswd", pawMD5);
         SysUser user = null;
         // 从数据库获取对应用户名密码的用户
         List<SysUser> userList = sysUserService.selectByMap(map);
@@ -56,13 +63,15 @@ public class MyShiroRealm extends AuthorizingRealm {
             user.setLastLoginTime(new Date());
             sysUserService.updateById(user);
         }
+        LOGGER.info("MyShiroRealm.doGetAuthenticationInfo (身份认证方法)：结束");
         return new SimpleAuthenticationInfo(user, password, getName());
     }
 
     //授权
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        System.out.println("权限认证方法：MyShiroRealm.doGetAuthorizationInfo()");
+        LOGGER.info("MyShiroRealm.doGetAuthorizationInfo (权限认证方法)：结束");
+
         SysUser token = (SysUser) SecurityUtils.getSubject().getPrincipal();
         Integer userId = token.getId();
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
@@ -90,6 +99,8 @@ public class MyShiroRealm extends AuthorizingRealm {
 //        Set<String> permissionSet = new HashSet<String>();
 //        permissionSet.add("权限添加");
 //        info.setStringPermissions(permissionSet);
+        LOGGER.info("MyShiroRealm.doGetAuthorizationInfo (权限认证方法)：结束");
         return info;
     }
+
 }

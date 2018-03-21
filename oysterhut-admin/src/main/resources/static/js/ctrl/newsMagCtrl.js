@@ -122,7 +122,7 @@ var TableInit = function () {
                 //window.location.href = "/qStock/qProInfo/" + row.ProductId;
             },
             responseHandler: function (res) {
-                if (res.resultInfo.status == 200) {
+                if (res.resultInfo.status == '000') {
                     list = res.resultMap.rows;
                     return {
                         "total": res.resultMap.total,//总页数
@@ -251,10 +251,10 @@ function submitForm() {
                 console.log("正在进行，请稍候");
             },
             success: function (result) {
-                if (res.resultInfo.status == 200) {
-                    alert(result.message);
+                if (result.resultInfo.status == '000') {
+                    alert(result.resultInfo.message);
                 } else {
-                    alert(result.message);
+                    alert(result.resultInfo.message);
                 }
             },
             error : function(result) {

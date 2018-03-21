@@ -23,16 +23,16 @@ function login() {
         $("#erro").html("验证码不能为空！");
         return;
     }
-    $.post("/loginIn", {
+    $.post("/loginSystem", {
         "username": username,
         "password": password,
         "vcode": vcode,
         /*"rememberMe": rememberMe*/
     }, function (result) {
-        if (result.status == 200) {
+        if (result.resultInfo.status == '000') {
             location.href = "/index.html";
         } else {
-            $("#erro").html(result.message);
+            $("#erro").html(result.resultInfo.message);
         }
     });
 }

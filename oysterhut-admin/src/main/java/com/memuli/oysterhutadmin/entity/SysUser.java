@@ -3,6 +3,7 @@ package com.memuli.oysterhutadmin.entity;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
+import net.sf.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -98,5 +99,9 @@ public class SysUser extends Model<SysUser> {
     @Override
     protected Serializable pkVal() {
         return this.id;
+    }
+
+    public String toJsonString() {
+        return JSONObject.fromObject(this).toString();
     }
 }

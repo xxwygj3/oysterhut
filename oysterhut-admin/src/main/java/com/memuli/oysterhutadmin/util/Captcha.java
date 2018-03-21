@@ -1,5 +1,9 @@
 package com.memuli.oysterhutadmin.util;
 
+import com.memuli.oysterhutadmin.controller.InitController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
 import java.awt.*;
@@ -13,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
  * 验证码抽象类,暂时不支持中文
  */
 public class Captcha {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Captcha.class);
     private static final Random RANDOM = new Random();
     //定义验证码字符.去除了O和I等容易混淆的字母
     public static final char ALPHA[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'G', 'K', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '2', '3', '4', '5', '6', '7', '8', '9'};
@@ -86,14 +91,14 @@ public class Captcha {
     /**
      * 验证码输出
      */
-    public void out(OutputStream out,HttpServletRequest request){
-        graphicsImage(alphas(), out,request);
+    public void out(OutputStream out, HttpServletRequest request) {
+        graphicsImage(alphas(), out, request);
     }
 
     /**
      * 画随机码图
      */
-    private boolean graphicsImage(char[] strs, OutputStream out,HttpServletRequest request) {
+    private boolean graphicsImage(char[] strs, OutputStream out, HttpServletRequest request) {
         boolean ok = false;
         try {
             BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -127,8 +132,8 @@ public class Captcha {
             HttpSession session = request.getSession(true);
             //存入Session
             String chars = new String(strs);
-            session.setAttribute("_code",chars.toLowerCase());
-            System.out.println("验证码："+chars);
+            session.setAttribute("_code", chars.toLowerCase());
+            LOGGER.info("Captcha.graphicsImage 验证码：" + chars);
             ImageIO.write(bi, "png", out);
             out.flush();
             ok = true;

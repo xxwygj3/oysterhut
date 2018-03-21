@@ -9,4 +9,8 @@
         <result column="password" property="password" />
     </resultMap>-->
 
+    <!--查询下一个序列值-->
+    <select id="selectSequence" resultType="int">
+        select seq_u_news.nextval from dual
+    </select>
 </mapper>
