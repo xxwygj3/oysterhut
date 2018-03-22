@@ -159,6 +159,7 @@ function showModel(operation, index) {
         var list_index_value = list[index];
         console.info(list_index_value);
         $("#news_title").val(list_index_value.title);
+        $("#news_summary").val(list_index_value.summary);
         $("[name='news_state']").each(function () {
             if ($(this).val() == list_index_value.state) {
                 //改变元素的boolean类型属性用prop才能生效
@@ -169,6 +170,8 @@ function showModel(operation, index) {
         $("[type='file']").val("");
         $("#preview_image_div").find("img").attr("src", list_index_value.imgUrl).show();
         $("#preview_image_div").show();
+        $("#news_source_type").val(list_index_value.sourceType);
+        $("#news_source_desc").val(list_index_value.sourceDesc);
         CKEDITOR.instances.news_content.setData(list_index_value.content);
         $("#news_id").val(list_index_value.id);
     } else {
@@ -177,6 +180,59 @@ function showModel(operation, index) {
     $("#myModal").modal();
 }
 
+function selectImage(obj) {
+    ischeck = true;
+    /* 检查图片的格式和大小 */
+    var checkFlag = checkImage(obj);
+    if (checkFlag || checkFlag == 'true' || checkFlag == 'True') {
+        previewImage(obj);
+    }
+}
+//检查图片类型及大小
+function checkImage(obj) {
+    var maxsize = 3 * 1024 * 1024;// 最大值300K
+    var imgFile = obj;
+    var pattern = /\.(gif|jpeg|bmp|jpg|png|JPEG|BMP|GIF|JPG|PNG)$/;
+    if (!pattern.test(imgFile.value)) {
+        alert("系统仅支持jpg/jpeg/png/gif/bmp格式的图片！");
+        $(obj).val("");
+        imgFile.focus();
+        $("#preview_image_div").html("");
+        return false;
+    }
+    var fileSize = 0;
+    var objPreviewFake = obj;
+    if (imgFile.files && imgFile.files[0]) {
+        try {
+            fileSize = imgFile.files[0].size;
+        } catch (e) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                fileSize = imgFile.files[0].size;
+            }
+        } // Firefox 因安全性问题已无法直接通过 input[file].value 获取完整的文件路径
+    } else if (objPreviewFake != null && objPreviewFake.filters) {
+        imgFile.select();
+        obj.focus();
+        var imgSrc = document.selection.createRange().text;
+        var img = new Image();
+        img.src = imgSrc;
+        if (img.complete) {
+            return false;
+        }
+        img.onload = function() {
+            fileSize = img.fileSize;
+        }
+    }
+    if(maxsize < fileSize){
+        alert("文件过大，不可大于3MB!");
+        $(obj).val("");
+        imgFile.focus();
+        $("#preview_image_div").html("<img alt='' src='' style='width: 220px;height: 100px;'/>");
+        return false;
+    }
+    return true;
+}
 //上传图片显示缩略图
 function previewImage(obj) {
     var imgFile = obj;
@@ -205,19 +261,21 @@ function clearForm() {
     $("#news_img_url_preview").attr("src", "");
     $("#preview_image_div").hide();
     $("[name='news_state']").removeAttr('checked');
+    $("#news_source_type").val("");
     CKEDITOR.instances.news_content.setData("");
-    //改变元素的boolean类型属性用prop才能生效
-    //$("[name='news_state'][value='8']").prop("checked",true);
 }
 
 //提交表单
 function submitForm() {
     var title = $("#news_title").val();
+    var summary = $("#news_summary").val();
     var state = $("[name='news_state']:checked").val();
     var order = $("#news_display_order").val();
     var imgUrl = $("#preview_image_div").find("img").attr("src");
+    var sourceType = $("#news_source_type").val();
+    var sourceDesc = $("#news_source_desc").val();
     var content = CKEDITOR.instances.news_content.getData();
-    if (!checkForm(title, state, order, imgUrl, content)) {
+    if (!checkForm(title, summary, state, order, imgUrl, sourceType, sourceDesc, content)) {
         return false;
     }
     // js 获取文件对象
@@ -226,8 +284,11 @@ function submitForm() {
     var param = new FormData();
     param.append("optType", optType);
     param.append("title", title);
+    param.append("summary", summary);
     param.append("state", state);
     param.append("order", order);
+    param.append("sourceType", sourceType);
+    param.append("sourceDesc", sourceDesc);
     param.append("content", content);
     if (optType == 0) {
         param.append("newsfile", fileObj);
@@ -247,33 +308,27 @@ function submitForm() {
             dataType: "json",
             contentType: false,// 告诉jQuery不要去设置Content-Type请求头
             processData: false,// 告诉jQuery不要去处理发送的数据
-            beforeSend:function(){
+            beforeSend: function () {
                 console.log("正在进行，请稍候");
             },
             success: function (result) {
                 if (result.resultInfo.status == '000') {
                     alert(result.resultInfo.message);
+                    location.reload();
                 } else {
                     alert(result.resultInfo.message);
                 }
             },
-            error : function(result) {
+            error: function (result) {
                 alert("请求失败，请稍后再试");
             }
         }
     );
-    // $.post("/news/addAndUpdateNews", param, function (result) {
-    //     if (result.status == 200) {
-    //         alert(result.message);
-    //     } else {
-    //         alert(result.message);
-    //     }
-    // });
     return false;
 }
 
 //检查表单非空项
-function checkForm(title, state, order, imgUrl, content) {
+function checkForm(title, summary, state, order, imgUrl, sourceType, sourceDesc, content) {
     var title = $("#news_title").val();
     if (!title) {
         alert("请输入标题！");
@@ -289,6 +344,10 @@ function checkForm(title, state, order, imgUrl, content) {
     }
     if (!imgUrl || imgUrl == undefined) {
         alert("请选择图片！");
+        return false;
+    }
+    if (!sourceType) {
+        alert("请选择来源类型！");
         return false;
     }
     if (!content) {

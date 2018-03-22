@@ -41,7 +41,13 @@
                         <div class="control-group">
                             <label class="control-label" for="news_title">标题：</label>
                             <div class="controls">
-                                <input id="news_title" type="text" value="TB - Monthly"/>
+                                <input id="news_title" type="text" value="标题" maxlength="100"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="news_summary">简介：</label>
+                            <div class="controls">
+                                <input id="news_summary" type="text" value="简介" maxlength="100"/>
                             </div>
                         </div>
                         <div class="control-group">
@@ -54,14 +60,16 @@
                         <div class="control-group">
                             <label class="control-label" for="news_display_order">排序：</label>
                             <div class="controls">
-                                <input id="news_display_order" type="text" value="1"/>
+                                <input id="news_display_order" type="text" value="1" maxlength="3"
+                                       onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                                       onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/>
                             </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label" for="news_img_url">缩略图：</label>
                             <div class="controls">
                                 <input id="news_img_url" type="file" class="form-control"
-                                       onchange="previewImage(this);"/>
+                                       onchange="selectImage(this);"/>
                             </div>
                         </div>
                         <div class="control-group">
@@ -71,15 +79,25 @@
                             </div>
                         </div>
                         <div class="control-group">
+                            <label class="control-label" for="news_source_type">来源类型：</label>
+                            <div class="controls">
+                                <select id="news_source_type">
+                                    <option value="">请选择</option>
+                                    <option value="1">原创</option>
+                                    <option value="2">转载</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="news_source_desc">来源描述：</label>
+                            <div class="controls">
+                                <input id="news_source_desc" type="text" value="来源描述" maxlength="100"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
                             <label class="control-label" for="news_content">内容：</label>
                             <div class="controls">
                                 <textarea id="news_content" name="news_content"></textarea>
-                            </div>
-                        </div>
-                        <div class="control-group" style="display: none;">
-                            <label class="control-label" for="news_id">编号：</label>
-                            <div class="controls">
-                                <input id="news_id" type="hidden" value="1"/>
                             </div>
                         </div>
                         <div class="control-group" style="display: none;">

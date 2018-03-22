@@ -1,5 +1,6 @@
 package com.memuli.oysterhutadmin.controller;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.google.common.base.Optional;
 import com.memuli.oysterhutadmin.config.UploadConfig;
@@ -23,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.util.Date;
 import java.util.UUID;
 
 @RestController
@@ -48,7 +50,11 @@ public class NewsController {
             //当前页码:pageIndex = offset/limit+1;limit每页的个数,offset分页时数据的偏移量
             Integer pageIndex = (offset + limit) / limit;
             Page<HutNews> page = new Page<HutNews>(pageIndex, limit);
-            page = hutNewsService.selectPage(page, null);
+            EntityWrapper<HutNews> wrapper = new EntityWrapper<HutNews>();
+            wrapper.orderBy("state",true);//状态升序
+            wrapper.orderBy("display_order",true);//显示顺序升序
+            wrapper.orderBy("create_time",false);//创建时间降序
+            page = hutNewsService.selectPage(page, wrapper);
             respData.addObject("total", page.getTotal());
             respData.addObject("rows", page.getRecords());
             respData.setResultInfo(new ResultInfo(ResultCode.CODE_000, msa.getMessage(ResultCode.CODE_000)));
@@ -88,11 +94,15 @@ public class NewsController {
         HutNews hutNews = new HutNews();
         if ("1".equals(optType)) {//编辑
             hutNews.setId(Integer.valueOf(request.getParameter("id")));
+            hutNews.setModifyBy(user.getNickname());//修改人
+            hutNews.setModifyTime(new Date());//修改时间
         }else if ("0".equals(optType)){//新增
             LOGGER.info("NewsController.addAndUpdateNews (新增或编辑新闻)：开始获取数据库序列值");
             Integer hutNewsId = hutNewsService.selectSequence();
             LOGGER.info("NewsController.addAndUpdateNews (新增或编辑新闻)：获取数据库序列值成功，值为"+hutNewsId);
             hutNews.setId(hutNewsId);
+            hutNews.setCreateBy(user.getNickname());//创建人
+            hutNews.setCreateTime(new Date());//创建时间
         }
         hutNews.setNewsType("1001");//类型1001新闻动态
         hutNews.setTitle(request.getParameter("title"));//标题
@@ -133,13 +143,12 @@ public class NewsController {
                 }
             }
         }
-        //hutNews.setSummary();//简介
+        hutNews.setSummary(request.getParameter("summary"));//简介
         hutNews.setContent(request.getParameter("content"));//内容
         hutNews.setDisplayOrder(Integer.valueOf(request.getParameter("order")));//显示顺序
         hutNews.setState(request.getParameter("state"));//状态8有效、9无效
-        hutNews.setCreateBy(user.getNickname());//创建人
-        //hutNews.setSourceType();//来源类型
-        //hutNews.setSourceDesc();//来源描述
+        hutNews.setSourceType(Integer.valueOf(request.getParameter("sourceType")));//来源类型
+        hutNews.setSourceDesc(request.getParameter("sourceDesc"));//来源描述
         return hutNews;
     }
 }
