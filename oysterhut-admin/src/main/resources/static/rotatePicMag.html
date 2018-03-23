@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ME牡蛎小屋后台管理系统--轮换图管理</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="bootstraptable/css/bootstrap-table.css" rel="stylesheet"/>
+    <link href="bootstrapdatetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+    <link rel="shortcut icon" href="/img/face_head.ico">
+    <script src="js/ctrl/commonJS.js"></script>
+    <script src="js/ctrl/rotatePicMagCtrl.js"></script>
+    <script src="bootstrapdatetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="bootstrapdatetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div id="headerComponent" class="row-fluid" style="background-color:#00c0ff;height: 100px;"></div>
+    <div class="row-fluid">
+        <div id="leftComponent" class="span2"
+             style="font-size: 18px;height:800px;overflow:auto;background-color: lightgoldenrodyellow;"></div>
+        <div id="rightComponent" class="span10" style="height:800px;overflow:auto;background-color: #dff0d8">
+            <div class="page-header">
+                <h1>
+                    <small>所有轮换图</small>
+                </h1>
+            </div>
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-zdy="" id="modalid0"
+                    onclick="showModel(0,'');">新建轮换图
+            </button>
+            <table id="table_server"></table>
+
+            <div id="myModal" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">
+                        轮换图管理详情
+                    </h3>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" id="rotate_pic_form">
+                        <div class="control-group">
+                            <label class="control-label" for="rotate_pic_name">名称：</label>
+                            <div class="controls">
+                                <input id="rotate_pic_name" type="text" value="名称" maxlength="100"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">状态：</label>
+                            <div class="controls">
+                                <input type="radio" value="8" name="rotate_pic_state"/>有效
+                                <input type="radio" value="9" name="rotate_pic_state"/>无效
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="rotate_pic_expire_time">到期时间：</label>
+                            <div class="controls">
+                                <input id="rotate_pic_expire_time" type="text"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="rotate_pic_display_order">排序：</label>
+                            <div class="controls">
+                                <input id="rotate_pic_display_order" type="text" value="1" maxlength="3"
+                                       onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                                       onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="rotate_pic_img_url">缩略图：</label>
+                            <div class="controls">
+                                <input id="rotate_pic_img_url" type="file" class="form-control"
+                                       onchange="selectImage(this);"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls" id="preview_image_div"
+                                 style="display: none;width: 220px;height: 100px;">
+                                <img src="" alt="" style="display: none;width: 220px;height: 100px;">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="rotate_pic_link_url">链接地址：</label>
+                            <div class="controls">
+                                <input id="rotate_pic_link_url" type="text" value="链接地址" maxlength="100"/>
+                            </div>
+                        </div>
+                        <div class="control-group" style="display: none;">
+                            <label class="control-label" for="rotate_pic_id">编号：</label>
+                            <div class="controls">
+                                <input id="rotate_pic_id" type="hidden" value="1"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true" onclick="clearForm();">关闭</button>
+                    <button class="btn btn-primary" onclick="submitForm();">保存设置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

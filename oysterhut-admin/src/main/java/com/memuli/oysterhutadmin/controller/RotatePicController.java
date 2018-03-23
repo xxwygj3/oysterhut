@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.google.common.base.Optional;
 import com.memuli.oysterhutadmin.constant.ResultCode;
 import com.memuli.oysterhutadmin.entity.HutNews;
+import com.memuli.oysterhutadmin.entity.HutRotatePic;
 import com.memuli.oysterhutadmin.entity.SysUser;
 import com.memuli.oysterhutadmin.util.HandleException;
 import com.memuli.oysterhutadmin.util.RespData;
@@ -23,36 +24,37 @@ import java.util.Date;
 import java.util.UUID;
 
 @RestController
-public class NewsController extends BaseController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(NewsController.class);
+public class RotatePicController extends BaseController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(RotatePicController.class);
 
-    //分页查询新闻列表
-    @GetMapping("/news/getNewsList")
-    public RespData getNewsList(@RequestParam (value = "offset",defaultValue = "1")Integer offset, @RequestParam (value = "limit",defaultValue = "10")Integer limit) {
-        LOGGER.info("NewsController.getNewsList (分页查询新闻列表) Request Parameters:+{'offset':" + offset + ",'limit':" + limit + "}");
+    //分页查询轮换图列表
+    @GetMapping("/rotatePic/getRotatePicList")
+    public RespData getRotatePicList(@RequestParam(value = "offset", defaultValue = "1") Integer offset,
+                                     @RequestParam(value = "limit", defaultValue = "10") Integer limit) {
+        LOGGER.info("RotatePicController.getRotatePicList (分页查询轮换图列表) Request Parameters:+{'offset':" + offset + ",'limit':" + limit + "}");
         RespData respData = new RespData();
         try {
             //当前页码:pageIndex = offset/limit+1;limit每页的个数,offset分页时数据的偏移量
             Integer pageIndex = (offset + limit) / limit;
-            Page<HutNews> page = new Page<HutNews>(pageIndex, limit);
-            EntityWrapper<HutNews> wrapper = new EntityWrapper<HutNews>();
-            wrapper.orderBy("state",true);//状态升序
-            wrapper.orderBy("display_order",true);//显示顺序升序
-            wrapper.orderBy("create_time",false);//创建时间降序
-            page = hutNewsService.selectPage(page, wrapper);
+            Page<HutRotatePic> page = new Page<HutRotatePic>(pageIndex, limit);
+            EntityWrapper<HutRotatePic> wrapper = new EntityWrapper<HutRotatePic>();
+            wrapper.orderBy("state", true);//状态升序
+            wrapper.orderBy("display_order", true);//显示顺序升序
+            wrapper.orderBy("create_time", false);//创建时间降序
+            page = hutRotatePicService.selectPage(page,wrapper);
             respData.addObject("total", page.getTotal());
             respData.addObject("rows", page.getRecords());
             respData.setResultInfo(new ResultInfo(ResultCode.CODE_000, msa.getMessage(ResultCode.CODE_000)));
         } catch (Exception e) {
-            LOGGER.error("NewsController.getNewsList (分页查询新闻列表) Exception",e);
+            LOGGER.error("RotatePicController.getRotatePicList (分页查询轮换图列表) Exception", e);
             respData.setResultInfo(new ResultInfo(ResultCode.CODE_999, msa.getMessage(ResultCode.CODE_999)));
         }
-        LOGGER.info("NewsController.getNewsList (分页查询新闻列表) Response parameter:" + respData.toJsonString());
+        LOGGER.info("RotatePicController.getRotatePicList (分页查询轮换图列表) Response parameter:" + respData.toJsonString());
         return respData;
     }
 
     //新增或编辑新闻
-    @PostMapping("/news/addAndUpdateNews")
+    @PostMapping("/rotatePic/addAndUpdateRotatePic")
     public RespData addAndUpdateNews(@RequestParam(value = "newsfile", required = false) MultipartFile[] newsfile,
                                      @RequestParam(value = "optType") String optType,
                                      HttpServletRequest request) {

@@ -7,15 +7,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c639a610-d8fc-4a21-aa08-9f099e76194b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/oysterhut_admin_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/oysterhut_admin_war_exploded.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/BaseController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/RotatePicController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/UserController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/dao/HutRotatePicMapper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/entity/HutRotatePic.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/service/HutRotatePicService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/bootstrapdatetimepicker/css/bootstrap-datetimepicker.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/bootstrapdatetimepicker/js/bootstrap-datetimepicker.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/bootstrapdatetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/modifyPwdCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/rotatePicMagCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/userMagCtrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/modifyPwd.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/rotatePicMag.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/userMag.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oysterhut-admin/pom.xml" afterPath="$PROJECT_DIR$/oysterhut-admin/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/constant/ResultCode.java" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/constant/ResultCode.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/NewsController.java" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/NewsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/entity/HutNews.java" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/entity/HutNews.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/newsMagCtrl.js" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/newsMagCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/newsMag.html" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/newsMag.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_2_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_2_0_5.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oysterhut-admin/src/main/resources/msa/message.properties" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/resources/msa/message.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/components/left.html" afterPath="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/components/left.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -42,169 +53,46 @@
     <expand />
     <select />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="oysterhut">
+      <favorite_root url="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/NewsController.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+    </favorites_list>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HutNews.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/entity/HutNews.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1521696650823" expanded="false" signature="1586:1597" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="1612:1618" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="1646:1657" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="1667:1673" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="1708:1719" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="1732:1738" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="1771:1782" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="1798:1804" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="1850:1861" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="1886:1892" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="1922:1933" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="1946:1952" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="1992:2003" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="2022:2028" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="2059:2070" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="2084:2090" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="2132:2143" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="2164:2170" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="2202:2213" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="2228:2234" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="2278:2289" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="2312:2318" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="2350:2361" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="2376:2382" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="2426:2437" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="2460:2466" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="2504:2515" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="2535:2541" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="2596:2607" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="2640:2646" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="2676:2687" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="2700:2706" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="2746:2757" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="2776:2782" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="2815:2826" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="2844:2850" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="2898:2909" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="2938:2944" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="2977:2988" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="3004:3010" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="3056:3067" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="3092:3098" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="3131:3142" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="3160:3166" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="3214:3225" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="3254:3260" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="3293:3304" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="3320:3326" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="3372:3383" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="3408:3414" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="3450:3461" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="3479:3485" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="3536:3547" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="3576:3582" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="3617:3628" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="3646:3652" ph=" }" />
-                <marker date="1521696650823" expanded="false" signature="3702:3713" ph=" { " />
-                <marker date="1521696650823" expanded="false" signature="3742:3748" ph=" }" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="newsMag.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/newsMag.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="71" column="60" lean-forward="false" selection-start-line="71" selection-start-column="60" selection-end-line="71" selection-end-column="60" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#5;n#form#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#0;n#div#5;n#form#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="newsMagCtrl.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/newsMagCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5875">
-              <caret line="235" column="11" lean-forward="true" selection-start-line="235" selection-start-column="11" selection-end-line="235" selection-end-column="11" />
-              <folding>
-                <marker date="1521702104208" expanded="true" signature="567:592" ph="..." />
-                <marker date="1521702104208" expanded="true" signature="8267:8294" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="NewsController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/NewsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="980">
-              <caret line="150" column="72" lean-forward="true" selection-start-line="150" selection-start-column="72" selection-end-line="150" selection-end-column="72" />
+            <state relative-caret-position="709">
+              <caret line="95" column="60" lean-forward="true" selection-start-line="95" selection-start-column="60" selection-end-line="95" selection-end-column="60" />
               <folding>
-                <element signature="e#2164#2173#0" expanded="true" />
-                <element signature="e#2255#2264#0" expanded="true" />
+                <element signature="e#1700#1709#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyShiroRealm.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/shiro/MyShiroRealm.java">
+      <file leaf-file-name="BaseController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/BaseController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="29" column="42" lean-forward="true" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
-              <folding>
-                <element signature="e#1782#1798#0" expanded="true" />
-                <element signature="e#3359#3375#0" expanded="true" />
-                <element signature="e#3522#3530#0" expanded="true" />
-                <element signature="e#3973#3981#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oysterhut-admin/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="44" column="49" lean-forward="false" selection-start-line="44" selection-start-column="49" selection-end-line="44" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="23" column="40" lean-forward="true" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShiroConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/config/ShiroConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1280">
-              <caret line="76" column="63" lean-forward="false" selection-start-line="76" selection-start-column="63" selection-end-line="76" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MybatisPlusConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/config/MybatisPlusConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="53" column="38" lean-forward="true" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+            <state relative-caret-position="475">
+              <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RotatePicController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/RotatePicController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="57" column="114" lean-forward="true" selection-start-line="57" selection-start-column="114" selection-end-line="57" selection-end-column="114" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1835#1849#0" expanded="true" />
+                <element signature="e#1936#1950#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -215,26 +103,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>CKEDITOR.replace</find>
-      <find>modal-998531</find>
-      <find>news_img_url_preview</find>
-      <find>operateFormatter</find>
-      <find>&quot;/news/all&quot;</find>
-      <find>newsTable</find>
-      <find>mo-content</find>
-      <find>sort</find>
-      <find>modal-container</find>
-      <find>data-toggle</find>
-      <find>dataColumns</find>
-      <find>dataUrl</find>
       <find>getNewsList</find>
       <find>res</find>
       <find>Page</find>
@@ -253,7 +129,24 @@
       <find>optType</find>
       <find>news_source_type</find>
       <find>fileSize</find>
+      <find>submitForm</find>
+      <find>news_content</find>
+      <find>CKEDITOR</find>
+      <find>news_id</find>
+      <find>news_</find>
+      <find>rotate_pic_name</find>
+      <find>rotate_pic_state</find>
+      <find>rotate_pic_display_order</find>
+      <find>preview_image_div</find>
+      <find>rotate_pic_id</find>
+      <find>rotate_pic_img_url_preview</find>
+      <find>rotate_pic_img_url</find>
     </findStrings>
+    <replaceStrings>
+      <replace>rotate_pic_content</replace>
+      <replace>轮换图</replace>
+      <replace>rotate_pic_</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -266,21 +159,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/commonJS.js" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/index.html" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/temp.txt" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/index1-1.html" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/components/left.html" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/ckeditor/config.js" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/config/UploadConfig.java" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/entity/News.java" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/util/PagingData.java" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/test.html" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/util/ReqData.java" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/util/AjaxResult.java" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/util/PageUtil.java" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/util/RespData.java" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/commonJS.js" />
         <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/util/HutNewsQuery.java" />
         <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/util/BaseRequest.java" />
         <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/entity/SysUser.java" />
@@ -298,15 +176,10 @@
         <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/indexCtrl.js" />
         <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/loginCtrl.js" />
         <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/loadComponent.js" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/config/ShiroConfig.java" />
         <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/dao/HutNewsMapper.java" />
         <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/service/HutNewsService.java" />
         <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/mapper/HutNewsMapper.xml" />
         <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/login.html" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/constant/ResultCode.java" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/msa/message.properties" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/LoginController.java" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/InitController.java" />
         <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/UploadController.java" />
         <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/entity/SysPermissionInit.java" />
         <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/config/MybatisPlusConfig.java" />
@@ -314,9 +187,29 @@
         <option value="$PROJECT_DIR$/oysterhut-admin/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/entity/HutNews.java" />
-        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/NewsController.java" />
         <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/newsMag.html" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/config/ShiroConfig.java" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/InitController.java" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/userMag.html" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/userMagCtrl.js" />
         <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/newsMagCtrl.js" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/modifyPwd.html" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/modifyPwdCtrl.js" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/rotationPicMag.html" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/components/left.html" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/service/RotatePicService.java" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/service/HutRotatePicService.java" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/dao/HutRotatePicMapper.java" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/entity/HutRotatePic.java" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/msa/message.properties" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/constant/ResultCode.java" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/NewsController.java" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/BaseController.java" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/RotatePicController.java" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/rotatePicMag.html" />
+        <option value="$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/rotatePicMagCtrl.js" />
       </list>
     </option>
   </component>
@@ -368,9 +261,10 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1319" />
     <option name="y" value="89" />
-    <option name="width" value="1920" />
+    <option name="width" value="601" />
     <option name="height" value="951" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -441,26 +335,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="oysterhutadmin" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oysterhut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oysterhut" type="462c0819:PsiDirectoryNode" />
-              <item name="oysterhut-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="oysterhutadmin" type="462c0819:PsiDirectoryNode" />
-              <item name="constant" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oysterhut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oysterhut" type="462c0819:PsiDirectoryNode" />
-              <item name="oysterhut-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="oysterhutadmin" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -509,16 +383,6 @@
               <item name="oysterhut-admin" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="oysterhutadmin" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="oysterhut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="oysterhut" type="462c0819:PsiDirectoryNode" />
-              <item name="oysterhut-admin" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -538,6 +402,50 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oysterhut" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oysterhut" type="462c0819:PsiDirectoryNode" />
+              <item name="oysterhut-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="bootstrapdatetimepicker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oysterhut" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oysterhut" type="462c0819:PsiDirectoryNode" />
+              <item name="oysterhut-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="bootstrapdatetimepicker" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oysterhut" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oysterhut" type="462c0819:PsiDirectoryNode" />
+              <item name="oysterhut-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="bootstrapdatetimepicker" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oysterhut" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oysterhut" type="462c0819:PsiDirectoryNode" />
+              <item name="oysterhut-admin" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="bootstrapdatetimepicker" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="locales" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="oysterhut" type="b2602c69:ProjectViewProjectNode" />
@@ -574,9 +482,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -599,29 +507,29 @@
     <property name="project.structure.side.proportion" value="0.2756953" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static\bootstrapdatetimepicker\js" />
+      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static\bootstrapdatetimepicker\css" />
+      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static" />
+      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static\bootstraptable\js\locale" />
+      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static\bootstraptable\js" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static\bootstrapdatetimepicker\js\locales" />
+      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static\bootstrapdatetimepicker" />
+      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static\js\ctrl" />
+      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static" />
+      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.memuli.oysterhutweb" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.memuli.oysterhutadmin.util" />
       <recent name="com.memuli.oysterhutadmin.dao" />
       <recent name="com.memuli.oysterhutadmin.service" />
       <recent name="com.memuli.oysterhutadmin.entity" />
       <recent name="com.memuli.oysterhutadmin.mapper" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static\bootstraptable\css" />
-      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static\bootstraptable\js" />
-      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static\bootstraptable\js\locales" />
-      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static\js" />
-      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\mapper" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.memuli.oysterhutweb" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static\bootstraptable\js\locale" />
-      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static\bootstraptable\js" />
-      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static\bootstraptable\css" />
-      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static\fileinput\js" />
-      <recent name="D:\oysterhut\oysterhut-admin\src\main\resources\static\webuploader\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1079,7 +987,8 @@
       <workItem from="1521424001909" duration="20709000" />
       <workItem from="1521465838727" duration="7351000" />
       <workItem from="1521599306991" duration="20749000" />
-      <workItem from="1521681249610" duration="14652000" />
+      <workItem from="1521681249610" duration="18934000" />
+      <workItem from="1521767579492" duration="24438000" />
     </task>
     <task id="LOCAL-00001" summary="牡蛎小屋项目">
       <created>1519639545968</created>
@@ -1186,11 +1095,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521626424103</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="牡蛎小屋项目--newsMag.html 新闻管理完成">
+      <created>1521702222164</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1521702222164</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="348984000" />
+    <option name="totallyTimeSpent" value="377704000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1202,7 +1118,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="89" width="1920" height="951" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1210,32 +1126,32 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0836887" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24972129" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23514539" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3716518" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3767383" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1640625" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284091" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3659091" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34545454" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22209822" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284091" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0125" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19462365" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2265625" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18923241" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297975" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29284903" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29284903" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1286,7 +1202,8 @@
     <MESSAGE value="牡蛎小屋项目--newsMag.html 编辑2" />
     <MESSAGE value="牡蛎小屋项目--newsMag.html 编辑4 新增" />
     <MESSAGE value="牡蛎小屋项目--newsMag.html 新增新闻 异常类处理" />
-    <option name="LAST_COMMIT_MESSAGE" value="牡蛎小屋项目--newsMag.html 新增新闻 异常类处理" />
+    <MESSAGE value="牡蛎小屋项目--newsMag.html 新闻管理完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="牡蛎小屋项目--newsMag.html 新闻管理完成" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1303,311 +1220,53 @@
           <properties />
           <option name="timeStamp" value="80" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/shiro/MyShiroRealm.java</url>
+          <line>80</line>
+          <properties />
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/shiro/MyShiroRealm.java</url>
+          <line>76</line>
+          <properties />
+          <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/UserController.java</url>
+          <line>25</line>
+          <properties />
+          <option name="timeStamp" value="91" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/RotatePicController.java</url>
+          <line>52</line>
+          <properties />
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/rotatePicMagCtrl.js</url>
+          <line>12</line>
+          <properties />
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="89" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="99" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
-        <watch expression="user.getNickname()" />
-      </configuration>
-    </watches-manager>
+    <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/util/ResultInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="e#368#369#0" expanded="false" />
-            <element signature="e#397#398#0" expanded="false" />
-            <element signature="e#441#442#0" expanded="false" />
-            <element signature="e#477#478#0" expanded="false" />
-            <element signature="e#511#512#0" expanded="false" />
-            <element signature="e#541#542#0" expanded="false" />
-            <element signature="e#587#588#0" expanded="false" />
-            <element signature="e#625#626#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/OysterhutAdminApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#915#916#0" expanded="false" />
-            <element signature="e#982#983#0" expanded="false" />
-            <element signature="e#1304#1305#0" expanded="false" />
-            <element signature="e#1360#1361#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/util/MessageSourceAccessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="14" column="6" lean-forward="true" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/ServletInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="6" column="13" lean-forward="true" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/util/HandleException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/util/Captcha.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="13" column="45" lean-forward="true" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
-          <folding>
-            <element signature="e#2483#2484#0" expanded="false" />
-            <element signature="e#2536#2537#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.3.2/shiro-core-1.3.2-sources.jar!/org/apache/shiro/authc/AuthenticationToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="55" column="31" lean-forward="true" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.3.2/shiro-core-1.3.2-sources.jar!/org/apache/shiro/subject/support/DelegatingSubject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="253" column="29" lean-forward="false" selection-start-line="253" selection-start-column="29" selection-end-line="253" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.3.2/shiro-core-1.3.2-sources.jar!/org/apache/shiro/subject/Subject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="332" column="9" lean-forward="false" selection-start-line="332" selection-start-column="9" selection-end-line="332" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/util/MyDES.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/loadComponent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="42" lean-forward="true" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/components/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="92" lean-forward="true" selection-start-line="5" selection-start-column="92" selection-end-line="5" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/loginCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="6" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/indexCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/util/MyMD5.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-100">
-          <caret line="8" column="54" lean-forward="true" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="54" />
-          <folding>
-            <element signature="e#397#398#0" expanded="false" />
-            <element signature="e#448#449#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus/2.0.1/mybatis-plus-2.0.1-sources.jar!/com/baomidou/mybatisplus/mapper/BaseMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="46" column="12" lean-forward="false" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis-spring/1.3.1/mybatis-spring-1.3.1-sources.jar!/org/mybatis/spring/MyBatisExceptionTranslator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis-spring/1.3.1/mybatis-spring-1.3.1-sources.jar!/org/mybatis/spring/SqlSessionTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="277" column="0" lean-forward="false" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.2/mybatis-3.4.2-sources.jar!/org/apache/ibatis/binding/MapperMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="53" column="19" lean-forward="false" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.14.RELEASE/spring-web-4.3.14.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="196" column="0" lean-forward="true" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus/2.0.1/mybatis-plus-2.0.1-sources.jar!/com/baomidou/mybatisplus/entity/GlobalConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="116" column="34" lean-forward="false" selection-start-line="116" selection-start-column="34" selection-end-line="116" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus/2.0.1/mybatis-plus-2.0.1-sources.jar!/com/baomidou/mybatisplus/enums/IdType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="32" column="26" lean-forward="true" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/dao/HutNewsMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="42" column="7" lean-forward="true" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/service/HutNewsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-          <folding>
-            <element signature="e#397#398#0" expanded="false" />
-            <element signature="e#447#448#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/constant/ResultCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="26" column="3" lean-forward="false" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/msa/message.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/mapper/HutNewsMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <marker date="1521624723952" expanded="true" signature="568:603" ph="select seque... dual" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/InitController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#847#848#0" expanded="false" />
-            <element signature="e#901#902#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/UploadController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="17" column="31" lean-forward="true" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/Date.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
           <caret line="163" column="11" lean-forward="false" selection-start-line="163" selection-start-column="11" selection-end-line="163" selection-end-column="11" />
-          <folding>
-            <element signature="e#6390#6391#0" expanded="false" />
-            <element signature="e#6438#6439#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1623,7 +1282,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="792">
           <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1631,7 +1289,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="381">
           <caret line="348" column="44" lean-forward="false" selection-start-line="348" selection-start-column="37" selection-end-line="348" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1647,22 +1304,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
           <caret line="29" column="17" lean-forward="false" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/service/SysPermissionInitService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="13" column="5" lean-forward="false" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
-          <caret line="23" column="40" lean-forward="true" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+          <caret line="23" column="40" lean-forward="false" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -1675,169 +1323,459 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/shiro/MyShiroRealm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="29" column="42" lean-forward="true" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
-          <folding>
-            <element signature="e#1782#1798#0" expanded="true" />
-            <element signature="e#3359#3375#0" expanded="true" />
-            <element signature="e#3522#3530#0" expanded="true" />
-            <element signature="e#3973#3981#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/config/ShiroConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1280">
-          <caret line="76" column="63" lean-forward="false" selection-start-line="76" selection-start-column="63" selection-end-line="76" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/config/MybatisPlusConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
-          <caret line="53" column="38" lean-forward="true" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+          <caret line="53" column="38" lean-forward="false" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/entity/SysPermissionInit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="17" column="7" lean-forward="false" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-          <folding>
-            <marker date="1521687790276" expanded="false" signature="645:656" ph=" { " />
-            <marker date="1521687790276" expanded="false" signature="666:672" ph=" }" />
-            <marker date="1521687790276" expanded="false" signature="707:718" ph=" { " />
-            <marker date="1521687790276" expanded="false" signature="731:737" ph=" }" />
-            <marker date="1521687790276" expanded="false" signature="765:776" ph=" { " />
-            <marker date="1521687790276" expanded="false" signature="787:793" ph=" }" />
-            <marker date="1521687790276" expanded="false" signature="829:840" ph=" { " />
-            <marker date="1521687790276" expanded="false" signature="855:861" ph=" }" />
-            <marker date="1521687790276" expanded="false" signature="900:911" ph=" { " />
-            <marker date="1521687790276" expanded="false" signature="933:939" ph=" }" />
-            <marker date="1521687790276" expanded="false" signature="997:1008" ph=" { " />
-            <marker date="1521687790276" expanded="false" signature="1045:1051" ph=" }" />
-            <marker date="1521687790276" expanded="false" signature="1081:1092" ph=" { " />
-            <marker date="1521687790276" expanded="false" signature="1104:1110" ph=" }" />
-            <marker date="1521687790276" expanded="false" signature="1149:1160" ph=" { " />
-            <marker date="1521687790276" expanded="false" signature="1177:1183" ph=" }" />
-            <marker date="1521687790276" expanded="false" signature="1249:1260" ph=" { " />
-            <marker date="1521687790276" expanded="false" signature="1275:1281" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/entity/HutNews.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1521696650823" expanded="false" signature="1586:1597" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="1612:1618" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="1646:1657" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="1667:1673" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="1708:1719" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="1732:1738" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="1771:1782" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="1798:1804" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="1850:1861" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="1886:1892" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="1922:1933" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="1946:1952" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="1992:2003" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="2022:2028" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="2059:2070" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="2084:2090" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="2132:2143" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="2164:2170" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="2202:2213" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="2228:2234" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="2278:2289" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="2312:2318" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="2350:2361" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="2376:2382" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="2426:2437" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="2460:2466" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="2504:2515" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="2535:2541" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="2596:2607" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="2640:2646" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="2676:2687" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="2700:2706" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="2746:2757" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="2776:2782" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="2815:2826" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="2844:2850" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="2898:2909" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="2938:2944" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="2977:2988" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="3004:3010" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="3056:3067" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="3092:3098" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="3131:3142" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="3160:3166" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="3214:3225" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="3254:3260" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="3293:3304" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="3320:3326" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="3372:3383" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="3408:3414" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="3450:3461" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="3479:3485" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="3536:3547" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="3576:3582" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="3617:3628" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="3646:3652" ph=" }" />
-            <marker date="1521696650823" expanded="false" signature="3702:3713" ph=" { " />
-            <marker date="1521696650823" expanded="false" signature="3742:3748" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus/2.0.5/mybatis-plus-2.0.5.jar!/com/baomidou/mybatisplus/service/impl/ServiceImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="92" column="19" lean-forward="false" selection-start-line="92" selection-start-column="19" selection-end-line="92" selection-end-column="19" />
+        <state relative-caret-position="400">
+          <caret line="20" column="34" lean-forward="false" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/NewsController.java">
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/config/ShiroConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="980">
-          <caret line="150" column="72" lean-forward="true" selection-start-line="150" selection-start-column="72" selection-end-line="150" selection-end-column="72" />
+        <state relative-caret-position="0">
+          <caret line="71" column="93" lean-forward="false" selection-start-line="71" selection-start-column="93" selection-end-line="71" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/InitController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="24" column="7" lean-forward="false" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
           <folding>
-            <element signature="e#2164#2173#0" expanded="true" />
-            <element signature="e#2255#2264#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1500">
+          <caret line="81" column="7" lean-forward="false" selection-start-line="81" selection-start-column="7" selection-end-line="81" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/entity/SysUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="10" column="20" lean-forward="true" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="30" lean-forward="false" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/indexCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/loadComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="42" lean-forward="true" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/commonJS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/temp.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/userMagCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8425">
+          <caret line="337" column="21" lean-forward="true" selection-start-line="337" selection-start-column="21" selection-end-line="337" selection-end-column="21" />
+          <folding>
+            <marker date="1521774759354" expanded="true" signature="567:592" ph="..." />
+            <marker date="1521774759354" expanded="true" signature="7437:7464" ph="..." />
+            <marker date="1521774759354" expanded="true" signature="8267:8294" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/userMag.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="107" column="30" lean-forward="true" selection-start-line="107" selection-start-column="30" selection-end-line="107" selection-end-column="30" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/loginCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="37" column="23" lean-forward="true" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#p#3;n#form#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/newsMag.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="71" column="60" lean-forward="false" selection-start-line="71" selection-start-column="60" selection-end-line="71" selection-end-column="60" />
+        <state relative-caret-position="-1418">
+          <caret line="37" column="22" lean-forward="true" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/modifyPwdCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="28" column="17" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/modifyPwd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="48" column="78" lean-forward="false" selection-start-line="48" selection-start-column="78" selection-end-line="48" selection-end-column="78" />
           <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#3;n#form#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#iframe#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="1152" column="15" lean-forward="false" selection-start-line="1152" selection-start-column="15" selection-end-line="1152" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/components/left.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="20" column="8" lean-forward="true" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.3.2/shiro-core-1.3.2-sources.jar!/org/apache/shiro/realm/AuthorizingRealm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="54" column="22" lean-forward="false" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/shiro/MyShiroRealm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="78" column="64" lean-forward="true" selection-start-line="78" selection-start-column="64" selection-end-line="78" selection-end-column="64" />
+          <folding>
+            <element signature="e#3359#3375#0" expanded="true" />
+            <element signature="e#3522#3530#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="72" column="54" lean-forward="false" selection-start-line="72" selection-start-column="54" selection-end-line="72" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1890#1899#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/service/SysPermissionInitService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="10" column="45" lean-forward="false" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="45" />
+          <folding>
+            <element signature="e#453#454#0" expanded="false" />
+            <element signature="e#498#499#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/dao/HutNewsMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus/2.0.5/mybatis-plus-2.0.5.jar!/com/baomidou/mybatisplus/plugins/Page.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="49" column="35" lean-forward="true" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
+          <folding>
+            <element signature="e#835#836#0" expanded="true" />
+            <element signature="e#870#871#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/service/HutRotatePicService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="46" lean-forward="true" selection-start-line="5" selection-start-column="46" selection-end-line="5" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/dao/HutRotatePicMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="70" lean-forward="true" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/entity/HutRotatePic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="70" column="11" lean-forward="true" selection-start-line="70" selection-start-column="11" selection-end-line="70" selection-end-column="11" />
+          <folding>
+            <element signature="e#1494#1495#0" expanded="true" />
+            <element signature="e#1524#1525#0" expanded="true" />
+            <element signature="e#1554#1555#0" expanded="true" />
+            <element signature="e#1579#1580#0" expanded="true" />
+            <element signature="e#1616#1617#0" expanded="true" />
+            <element signature="e#1644#1645#0" expanded="true" />
+            <element signature="e#1688#1689#0" expanded="true" />
+            <element signature="e#1728#1729#0" expanded="true" />
+            <element signature="e#1794#1795#0" expanded="true" />
+            <element signature="e#1852#1853#0" expanded="true" />
+            <element signature="e#1883#1884#0" expanded="true" />
+            <element signature="e#1910#1911#0" expanded="true" />
+            <element signature="e#1950#1951#0" expanded="true" />
+            <element signature="e#1982#1983#0" expanded="true" />
+            <element signature="e#2015#2016#0" expanded="true" />
+            <element signature="e#2044#2045#0" expanded="true" />
+            <element signature="e#2088#2089#0" expanded="true" />
+            <element signature="e#2124#2125#0" expanded="true" />
+            <element signature="e#2164#2165#0" expanded="true" />
+            <element signature="e#2199#2200#0" expanded="true" />
+            <element signature="e#2256#2257#0" expanded="true" />
+            <element signature="e#2304#2305#0" expanded="true" />
+            <element signature="e#2338#2339#0" expanded="true" />
+            <element signature="e#2368#2369#0" expanded="true" />
+            <element signature="e#2414#2415#0" expanded="true" />
+            <element signature="e#2452#2453#0" expanded="true" />
+            <element signature="e#2484#2485#0" expanded="true" />
+            <element signature="e#2512#2513#0" expanded="true" />
+            <element signature="e#2554#2555#0" expanded="true" />
+            <element signature="e#2588#2589#0" expanded="true" />
+            <element signature="e#2623#2624#0" expanded="true" />
+            <element signature="e#2656#2657#0" expanded="true" />
+            <element signature="e#2706#2707#0" expanded="true" />
+            <element signature="e#2750#2751#0" expanded="true" />
+            <element signature="e#2785#2786#0" expanded="true" />
+            <element signature="e#2818#2819#0" expanded="true" />
+            <element signature="e#2868#2869#0" expanded="true" />
+            <element signature="e#2912#2913#0" expanded="true" />
+            <element signature="e#2947#2948#0" expanded="true" />
+            <element signature="e#2978#2979#0" expanded="true" />
+            <element signature="e#3026#3027#0" expanded="true" />
+            <element signature="e#3066#3067#0" expanded="true" />
+            <element signature="e#3101#3102#0" expanded="true" />
+            <element signature="e#3134#3135#0" expanded="true" />
+            <element signature="e#3184#3185#0" expanded="true" />
+            <element signature="e#3228#3229#0" expanded="true" />
+            <element signature="e#3263#3264#0" expanded="true" />
+            <element signature="e#3294#3295#0" expanded="true" />
+            <element signature="e#3342#3343#0" expanded="true" />
+            <element signature="e#3382#3383#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/service/HutNewsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/entity/HutNews.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="83" column="5" lean-forward="true" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus/2.0.5/mybatis-plus-2.0.5.jar!/com/baomidou/mybatisplus/service/impl/ServiceImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="258" column="65" lean-forward="true" selection-start-line="258" selection-start-column="65" selection-end-line="258" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/BaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/constant/ResultCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="47" column="48" lean-forward="true" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/msa/message.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/newsMagCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="317" column="24" lean-forward="true" selection-start-line="317" selection-start-column="24" selection-end-line="317" selection-end-column="24" />
+          <folding>
+            <marker date="1521702104208" expanded="true" signature="567:592" ph="..." />
+            <marker date="1521702104208" expanded="true" signature="7437:7464" ph="..." />
+            <marker date="1521702104208" expanded="true" signature="8267:8294" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/bootstrapdatetimepicker/css/bootstrap-datetimepicker.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/bootstrapdatetimepicker/js/bootstrap-datetimepicker.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/bootstrapdatetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="11" lean-forward="true" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/rotatePicMag.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-464">
+          <caret line="48" column="51" lean-forward="true" selection-start-line="48" selection-start-column="51" selection-end-line="48" selection-end-column="51" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#5;n#form#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#5;n#form#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/newsMagCtrl.js">
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/resources/static/js/ctrl/rotatePicMagCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5875">
-          <caret line="235" column="11" lean-forward="true" selection-start-line="235" selection-start-column="11" selection-end-line="235" selection-end-column="11" />
+        <state relative-caret-position="175">
+          <caret line="315" column="14" lean-forward="true" selection-start-line="315" selection-start-column="14" selection-end-line="315" selection-end-column="14" />
           <folding>
-            <marker date="1521702104208" expanded="true" signature="567:592" ph="..." />
-            <marker date="1521702104208" expanded="true" signature="8267:8294" ph="..." />
+            <element signature="e#333#1711#0" expanded="false" />
+            <element signature="n#!!block;n#dataQueryParams#0" expanded="false" />
+            <element signature="n#!!block;n#formatDate#0" expanded="false" />
+            <element signature="e#2682#4882#0" expanded="false" />
+            <element signature="n#!!block;n#selectImage#0" expanded="false" />
+            <element signature="n#!!block;n#checkImage#0" expanded="false" />
+            <element signature="n#!!block;n#previewImage#0" expanded="false" />
+            <marker date="1521798896518" expanded="true" signature="721:746" ph="..." />
+            <marker date="1521798896518" expanded="true" signature="7579:7606" ph="..." />
+            <marker date="1521798896518" expanded="true" signature="8415:8442" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/NewsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="709">
+          <caret line="95" column="60" lean-forward="true" selection-start-line="95" selection-start-column="60" selection-end-line="95" selection-end-column="60" />
+          <folding>
+            <element signature="e#1700#1709#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oysterhut-admin/src/main/java/com/memuli/oysterhutadmin/controller/RotatePicController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="57" column="114" lean-forward="true" selection-start-line="57" selection-start-column="114" selection-end-line="57" selection-end-column="114" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1835#1849#0" expanded="true" />
+            <element signature="e#1936#1950#0" expanded="true" />
           </folding>
         </state>
       </provider>
