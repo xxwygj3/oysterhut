@@ -6,7 +6,7 @@ $(function () {
     $("#rotate_pic_expire_time").datetimepicker({
         language: 'zh-CN',//显示中文
         format: 'yyyy-mm-dd hh:ii:ss',//显示格式
-        startDate:new Date(),
+        startDate: new Date(),
     });
 });
 var dataUrl = "/rotatePic/getRotatePicList";
@@ -46,6 +46,14 @@ var dataColumns = [
         title: '轮换图排序',
         field: 'displayOrder',
         align: 'center',
+    },
+    {
+        title: '过期时间',
+        field: 'expireTime',
+        align: 'center',
+        formatter: function (value, row, index) {
+            return formatDate(row.expireTime);
+        }
     },
     {
         title: '状态',
@@ -175,7 +183,7 @@ function showModel(operation, index) {
                 $(this).prop("checked", true);
             }
         });
-        $("#rotate_pic_expire_time").val(list_index_value.expireTime);
+        $("#rotate_pic_expire_time").val(timetrans(list_index_value.expireTime));
         $("#rotate_pic_display_order").val(list_index_value.displayOrder);
         $("[type='file']").val("");
         $("#preview_image_div").find("img").attr("src", list_index_value.imgUrl).show();
@@ -189,6 +197,21 @@ function showModel(operation, index) {
     $("#myModal").modal();
 }
 
+//时间戳转化成时间
+function timetrans(date) {
+    if (!date) {
+        return;
+    }
+    var date = new Date(date);
+    var Y = date.getFullYear() + '-';
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    var D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
+    var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+    var m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+    var s = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+    return Y + M + D + h + m + s;
+}
+
 function selectImage(obj) {
     ischeck = true;
     /* 检查图片的格式和大小 */
@@ -197,6 +220,7 @@ function selectImage(obj) {
         previewImage(obj);
     }
 }
+
 //检查图片类型及大小
 function checkImage(obj) {
     var maxsize = 3 * 1024 * 1024;// 最大值300K
@@ -216,7 +240,7 @@ function checkImage(obj) {
             fileSize = imgFile.files[0].size;
         } catch (e) {
             var reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 fileSize = imgFile.files[0].size;
             }
         } // Firefox 因安全性问题已无法直接通过 input[file].value 获取完整的文件路径
@@ -229,11 +253,11 @@ function checkImage(obj) {
         if (img.complete) {
             return false;
         }
-        img.onload = function() {
+        img.onload = function () {
             fileSize = img.fileSize;
         }
     }
-    if(maxsize < fileSize){
+    if (maxsize < fileSize) {
         alert("文件过大，不可大于3MB!");
         $(obj).val("");
         imgFile.focus();
@@ -242,6 +266,7 @@ function checkImage(obj) {
     }
     return true;
 }
+
 //上传图片显示缩略图
 function previewImage(obj) {
     var imgFile = obj;
@@ -276,7 +301,7 @@ function clearForm() {
 function submitForm() {
     var name = $("#rotate_pic_name").val();
     var state = $("[name='rotate_pic_state']:checked").val();
-    var expireTime = $("#rotate_pic_expire_time");
+    var expireTime = $("#rotate_pic_expire_time").val();
     var order = $("#rotate_pic_display_order").val();
     var imgUrl = $("#preview_image_div").find("img").attr("src");
     var linkUrl = $("#rotate_pic_link_url").val();

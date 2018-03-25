@@ -4,10 +4,10 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.google.common.base.Optional;
 import com.memuli.oysterhutadmin.constant.ResultCode;
-import com.memuli.oysterhutadmin.entity.HutNews;
 import com.memuli.oysterhutadmin.entity.HutRotatePic;
 import com.memuli.oysterhutadmin.entity.SysUser;
 import com.memuli.oysterhutadmin.util.HandleException;
+import com.memuli.oysterhutadmin.util.MyDate;
 import com.memuli.oysterhutadmin.util.RespData;
 import com.memuli.oysterhutadmin.util.ResultInfo;
 import org.slf4j.Logger;
@@ -26,6 +26,8 @@ import java.util.UUID;
 @RestController
 public class RotatePicController extends BaseController {
     private static final Logger LOGGER = LoggerFactory.getLogger(RotatePicController.class);
+    private final static String URL_HTTP_HEAD = "http://";
+    private final static String URL_HTTPS_HEAD = "https://";
 
     //分页查询轮换图列表
     @GetMapping("/rotatePic/getRotatePicList")
@@ -53,12 +55,12 @@ public class RotatePicController extends BaseController {
         return respData;
     }
 
-    //新增或编辑新闻
+    //新增或编辑轮换图
     @PostMapping("/rotatePic/addAndUpdateRotatePic")
-    public RespData addAndUpdateNews(@RequestParam(value = "newsfile", required = false) MultipartFile[] newsfile,
+    public RespData addAndUpdateRotatePic(@RequestParam(value = "rotatePicfile", required = false) MultipartFile[] rotatePicfile,
                                      @RequestParam(value = "optType") String optType,
                                      HttpServletRequest request) {
-        LOGGER.info("NewsController.addAndUpdateNews (新增或编辑新闻) Request Parameters:+{'optType':" + optType + "}");
+        LOGGER.info("RotatePicController.addAndUpdateNews (新增或编辑轮换图) Request Parameters:+{'optType':" + optType + "}");
         RespData respData = new RespData();
         try {
             //获取当前用户信息
@@ -66,79 +68,56 @@ public class RotatePicController extends BaseController {
             if (null == loginUser) {
                 throw new HandleException(new ResultInfo(ResultCode.CODE_005, msa.getMessage(ResultCode.CODE_005)));
             }
-            HutNews hutNews = getHutNewsEntity(loginUser, newsfile, request, optType);
-            hutNewsService.insertOrUpdate(hutNews);
+            HutRotatePic hutRotatePic = getEntity(loginUser, rotatePicfile, request, optType);
+            hutRotatePicService.insertOrUpdate(hutRotatePic);
             respData.setResultInfo(new ResultInfo(ResultCode.CODE_000, msa.getMessage(ResultCode.CODE_000)));
         } catch (HandleException hle) {
-            LOGGER.error("NewsController.addAndUpdateNews (新增或编辑新闻) HandleException",hle);
+            LOGGER.error("RotatePicController.addAndUpdateRotatePic (新增或编辑轮换图) HandleException",hle);
             respData.setResultInfo(hle.getResultInfo());
         } catch (Exception e) {
-            LOGGER.error("NewsController.addAndUpdateNews (新增或编辑新闻) Exception",e);
+            LOGGER.error("RotatePicController.addAndUpdateRotatePic (新增或编辑轮换图) Exception",e);
             respData.setResultInfo(new ResultInfo(ResultCode.CODE_999, msa.getMessage(ResultCode.CODE_999)));
         }
-        LOGGER.info("NewsController.addAndUpdateNews (新增或编辑新闻) Response parameter:" + respData.toJsonString());
+        LOGGER.info("RotatePicController.addAndUpdateRotatePic (新增或编辑轮换图) Response parameter:" + respData.toJsonString());
         return respData;
     }
 
-    private HutNews getHutNewsEntity(SysUser user, MultipartFile[] newsfile, HttpServletRequest request, String optType) throws Exception {
-        HutNews hutNews = new HutNews();
+    private HutRotatePic getEntity(SysUser user, MultipartFile[] files, HttpServletRequest request, String optType) throws Exception {
+        HutRotatePic hutRotatePic = new HutRotatePic();
         if ("1".equals(optType)) {//编辑
-            hutNews.setId(Integer.valueOf(request.getParameter("id")));
-            hutNews.setModifyBy(user.getNickname());//修改人
-            hutNews.setModifyTime(new Date());//修改时间
+            hutRotatePic.setId(Integer.valueOf(request.getParameter("id")));
+            hutRotatePic.setModifyBy(user.getNickname());//修改人
+            hutRotatePic.setModifyTime(new Date());//修改时间
         }else if ("0".equals(optType)){//新增
             LOGGER.info("NewsController.addAndUpdateNews (新增或编辑新闻)：开始获取数据库序列值");
-            Integer hutNewsId = hutNewsService.selectSequence();
-            LOGGER.info("NewsController.addAndUpdateNews (新增或编辑新闻)：获取数据库序列值成功，值为"+hutNewsId);
-            hutNews.setId(hutNewsId);
-            hutNews.setCreateBy(user.getNickname());//创建人
-            hutNews.setCreateTime(new Date());//创建时间
+            Integer hutRotatePicId = hutRotatePicService.selectSequence();
+            LOGGER.info("NewsController.addAndUpdateNews (新增或编辑新闻)：获取数据库序列值成功，值为"+hutRotatePicId);
+            hutRotatePic.setId(hutRotatePicId);
+            hutRotatePic.setCreateBy(user.getNickname());//创建人
+            hutRotatePic.setCreateTime(new Date());//创建时间
         }
-        hutNews.setNewsType("1001");//类型1001新闻动态
-        hutNews.setTitle(request.getParameter("title"));//标题
-        if (Optional.fromNullable(newsfile).isPresent()) {//如果Optional包含的T实例不为null，则返回true；若T实例为null，返回false
-            for (MultipartFile newfile : newsfile) {
-                if (!newfile.isEmpty()) {
-                    long size = 3 * 1024 * 1024;
-                    if (newsfile[0].getSize() > size) {
-                        throw new HandleException(ResultCode.CODE_009, msa.getMessage(ResultCode.CODE_009));
-                    }
-                    StringBuffer pathStringBuffer = new StringBuffer(request.getSession().getServletContext().getRealPath("/"));
-                    pathStringBuffer.append("news/");
-                    String path = pathStringBuffer.toString();
-                    String fileName = UUID.randomUUID().toString().replace("-", "");
-                    if (newsfile[0].getContentType().equals("image/jpeg")) {
-                        fileName += ".jpg";
-                    } else if (newsfile[0].getContentType().equals("image/png")) {
-                        fileName += ".png";
-                    } else if (newsfile[0].getContentType().equals("image/gif")) {
-                        fileName += ".gif";
-                    } else if (newsfile[0].getContentType().equals("image/bmp")) {
-                        fileName += ".bmp";
-                    } else {
-                        throw new HandleException(ResultCode.CODE_008, msa.getMessage(ResultCode.CODE_008,newsfile[0].getContentType()));
-                    }
-                    File dir = new File(path);
-                    if (!dir.exists()) {
-                        dir.mkdirs();
-                    }
-                    File targetFile = new File(path, fileName);
-                    // 写入文件
-                    newsfile[0].transferTo(targetFile);
-                    // 保存文件上传路径
-                    StringBuffer requestUrlStringBuffer = new StringBuffer(uploadConfig.getRequestUrl());
-                    requestUrlStringBuffer.append("/news/").append(fileName);
-                    String requestUrl = requestUrlStringBuffer.toString();
-                    hutNews.setImgUrl(requestUrl);//图片地址
+        hutRotatePic.setRotatePictureType("2001");//类型2001首页轮换图片
+        hutRotatePic.setName(request.getParameter("name"));//名称
+        if (Optional.fromNullable(files).isPresent()) {//如果Optional包含的T实例不为null，则返回true；若T实例为null，返回false
+            for (MultipartFile file : files) {
+                if (!file.isEmpty()) {
+                    hutRotatePic.setImgUrl(getRequestImgUrl(files,request,"rotatePic/"));//图片地址
                 }
             }
         }
-        hutNews.setSummary(request.getParameter("summary"));//简介
-        hutNews.setContent(request.getParameter("content"));//内容
-        hutNews.setDisplayOrder(Integer.valueOf(request.getParameter("order")));//显示顺序
-        hutNews.setState(request.getParameter("state"));//状态8有效、9无效
-        hutNews.setSourceType(Integer.valueOf(request.getParameter("sourceType")));//来源类型
-        hutNews.setSourceDesc(request.getParameter("sourceDesc"));//来源描述
-        return hutNews;
+        hutRotatePic.setLinkUrl(getCompleteUrl(request.getParameter("linkUrl")));//链接地址
+        hutRotatePic.setDisplayOrder(Integer.valueOf(request.getParameter("order")));//显示顺序
+        hutRotatePic.setState(request.getParameter("state"));//状态8有效、9无效
+        String expireTime = request.getParameter("expireTime");
+        hutRotatePic.setExpireTime(MyDate.stringToDate(expireTime,"yyyy-MM-dd HH:mm:ss"));//到期时间
+        return hutRotatePic;
+    }
+
+    //添加url协议头
+    private static String getCompleteUrl(String url){
+        if(!url.startsWith(URL_HTTP_HEAD) && !url.startsWith(URL_HTTPS_HEAD)){
+            return URL_HTTP_HEAD.concat(url);
+        }
+        return url;
     }
 }

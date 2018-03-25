@@ -78,7 +78,7 @@ public class NewsController extends BaseController {
         return respData;
     }
 
-    private HutNews getHutNewsEntity(SysUser user, MultipartFile[] newsfile, HttpServletRequest request, String optType) throws Exception {
+    private HutNews getHutNewsEntity(SysUser user, MultipartFile[] files, HttpServletRequest request, String optType) throws Exception {
         HutNews hutNews = new HutNews();
         if ("1".equals(optType)) {//编辑
             hutNews.setId(Integer.valueOf(request.getParameter("id")));
@@ -94,40 +94,10 @@ public class NewsController extends BaseController {
         }
         hutNews.setNewsType("1001");//类型1001新闻动态
         hutNews.setTitle(request.getParameter("title"));//标题
-        if (Optional.fromNullable(newsfile).isPresent()) {//如果Optional包含的T实例不为null，则返回true；若T实例为null，返回false
-            for (MultipartFile newfile : newsfile) {
-                if (!newfile.isEmpty()) {
-                    long size = 3 * 1024 * 1024;
-                    if (newsfile[0].getSize() > size) {
-                        throw new HandleException(ResultCode.CODE_009, msa.getMessage(ResultCode.CODE_009));
-                    }
-                    StringBuffer pathStringBuffer = new StringBuffer(request.getSession().getServletContext().getRealPath("/"));
-                    pathStringBuffer.append("news/");
-                    String path = pathStringBuffer.toString();
-                    String fileName = UUID.randomUUID().toString().replace("-", "");
-                    if (newsfile[0].getContentType().equals("image/jpeg")) {
-                        fileName += ".jpg";
-                    } else if (newsfile[0].getContentType().equals("image/png")) {
-                        fileName += ".png";
-                    } else if (newsfile[0].getContentType().equals("image/gif")) {
-                        fileName += ".gif";
-                    } else if (newsfile[0].getContentType().equals("image/bmp")) {
-                        fileName += ".bmp";
-                    } else {
-                        throw new HandleException(ResultCode.CODE_008, msa.getMessage(ResultCode.CODE_008,newsfile[0].getContentType()));
-                    }
-                    File dir = new File(path);
-                    if (!dir.exists()) {
-                        dir.mkdirs();
-                    }
-                    File targetFile = new File(path, fileName);
-                    // 写入文件
-                    newsfile[0].transferTo(targetFile);
-                    // 保存文件上传路径
-                    StringBuffer requestUrlStringBuffer = new StringBuffer(uploadConfig.getRequestUrl());
-                    requestUrlStringBuffer.append("/news/").append(fileName);
-                    String requestUrl = requestUrlStringBuffer.toString();
-                    hutNews.setImgUrl(requestUrl);//图片地址
+        if (Optional.fromNullable(files).isPresent()) {//如果Optional包含的T实例不为null，则返回true；若T实例为null，返回false
+            for (MultipartFile file : files) {
+                if (!file.isEmpty()) {
+                    hutNews.setImgUrl(getRequestImgUrl(files,request,"news/"));//图片地址
                 }
             }
         }
