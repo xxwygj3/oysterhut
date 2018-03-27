@@ -39,9 +39,25 @@
                 <div class="modal-body">
                     <form class="form-horizontal" id="news_form">
                         <div class="control-group">
+                            <label class="control-label" for="news_type_select">类型：</label>
+                            <div class="controls">
+                                <select id="news_type_select">
+                                    <option value="">请选择</option>
+                                    <option value="1001">牡蛎新闻</option>
+                                    <option value="1002">小屋新闻</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
                             <label class="control-label" for="news_title">标题：</label>
                             <div class="controls">
                                 <input id="news_title" type="text" value="标题" maxlength="100"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="news_tag_val">标签：</label>
+                            <div class="controls">
+                                <input id="news_tag_val" type="text" value="标签" placeholder="牡蛎价值、牡蛎产业、牡蛎美食、牡蛎养殖、小屋动态、小屋菜色、小屋装饰、小屋风景" maxlength="100"/>
                             </div>
                         </div>
                         <div class="control-group">

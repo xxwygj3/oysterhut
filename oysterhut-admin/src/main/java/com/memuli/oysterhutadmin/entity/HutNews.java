@@ -13,10 +13,15 @@ public class HutNews extends Model<HutNews> {
 
     private Integer id;
     /**
-     * 类型 1001新闻动态
+     * 类型 1001牡蛎新闻、1002小屋新闻
      */
     @TableField(value = "news_type")
     private String newsType;
+    /**
+     * 标签 牡蛎价值、牡蛎产业、牡蛎美食、牡蛎养殖、小屋动态、小屋菜色、小屋装饰、小屋风景
+     */
+    @TableField(value = "news_tag")
+    private String newsTag;
     /**
      * 标题
      */
@@ -97,6 +102,14 @@ public class HutNews extends Model<HutNews> {
 
     public void setNewsType(String newsType) {
         this.newsType = newsType;
+    }
+
+    public String getNewsTag() {
+        return newsTag;
+    }
+
+    public void setNewsTag(String newsTag) {
+        this.newsTag = newsTag;
     }
 
     public String getTitle() {

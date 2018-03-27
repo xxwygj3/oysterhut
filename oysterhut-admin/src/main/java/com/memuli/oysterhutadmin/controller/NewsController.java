@@ -92,7 +92,6 @@ public class NewsController extends BaseController {
             hutNews.setCreateBy(user.getNickname());//创建人
             hutNews.setCreateTime(new Date());//创建时间
         }
-        hutNews.setNewsType("1001");//类型1001新闻动态
         hutNews.setTitle(request.getParameter("title"));//标题
         if (Optional.fromNullable(files).isPresent()) {//如果Optional包含的T实例不为null，则返回true；若T实例为null，返回false
             for (MultipartFile file : files) {
@@ -101,6 +100,8 @@ public class NewsController extends BaseController {
                 }
             }
         }
+        hutNews.setNewsType(request.getParameter("type"));//类型1001牡蛎新闻、1002小屋新闻
+        hutNews.setNewsTag(request.getParameter("tag"));//标签
         hutNews.setSummary(request.getParameter("summary"));//简介
         hutNews.setContent(request.getParameter("content"));//内容
         hutNews.setDisplayOrder(Integer.valueOf(request.getParameter("order")));//显示顺序

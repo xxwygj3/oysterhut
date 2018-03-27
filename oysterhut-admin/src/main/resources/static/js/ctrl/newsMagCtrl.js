@@ -12,8 +12,27 @@ var dataColumns = [
         align: 'center'//水平居中
     },
     {
+        title: '新闻类型',//表的列名
+        field: 'newsType',//json数据中rows数组中的属性名
+        align: 'center',
+        formatter: function (value, row, index) {
+            if (row.newsType == "1001") {
+                return "牡蛎新闻";
+            } else if (row.newsType == "1002") {
+                return "小屋新闻";
+            } else {
+                return "-";
+            }
+        }
+    },
+    {
         title: '新闻标题',
         field: 'title',
+        align: 'center'
+    },
+    {
+        title: '标签',
+        field: 'newsTag',
         align: 'center'
     },
     {
@@ -158,7 +177,9 @@ function showModel(operation, index) {
     if (operation == 1) {
         var list_index_value = list[index];
         console.info(list_index_value);
+        $("#news_type_select").val(list_index_value.newsType);
         $("#news_title").val(list_index_value.title);
+        $("#news_tag_val").val(list_index_value.newsTag);
         $("#news_summary").val(list_index_value.summary);
         $("[name='news_state']").each(function () {
             if ($(this).val() == list_index_value.state) {
@@ -188,6 +209,7 @@ function selectImage(obj) {
         previewImage(obj);
     }
 }
+
 //检查图片类型及大小
 function checkImage(obj) {
     var maxsize = 3 * 1024 * 1024;// 最大值300K
@@ -207,7 +229,7 @@ function checkImage(obj) {
             fileSize = imgFile.files[0].size;
         } catch (e) {
             var reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 fileSize = imgFile.files[0].size;
             }
         } // Firefox 因安全性问题已无法直接通过 input[file].value 获取完整的文件路径
@@ -220,11 +242,11 @@ function checkImage(obj) {
         if (img.complete) {
             return false;
         }
-        img.onload = function() {
+        img.onload = function () {
             fileSize = img.fileSize;
         }
     }
-    if(maxsize < fileSize){
+    if (maxsize < fileSize) {
         alert("文件过大，不可大于3MB!");
         $(obj).val("");
         imgFile.focus();
@@ -233,6 +255,7 @@ function checkImage(obj) {
     }
     return true;
 }
+
 //上传图片显示缩略图
 function previewImage(obj) {
     var imgFile = obj;
@@ -255,6 +278,7 @@ function previewImage(obj) {
 
 //清空表单
 function clearForm() {
+    $("#news_type_select").val("");
     $("[type='text']").val("");
     $("[type='hidden']").val("");
     $("[type='file']").val("");
@@ -267,7 +291,9 @@ function clearForm() {
 
 //提交表单
 function submitForm() {
+    var type = $("#news_type_select").val();
     var title = $("#news_title").val();
+    var tag = $("#news_tag_val").val();
     var summary = $("#news_summary").val();
     var state = $("[name='news_state']:checked").val();
     var order = $("#news_display_order").val();
@@ -275,7 +301,7 @@ function submitForm() {
     var sourceType = $("#news_source_type").val();
     var sourceDesc = $("#news_source_desc").val();
     var content = CKEDITOR.instances.news_content.getData();
-    if (!checkForm(title, summary, state, order, imgUrl, sourceType, sourceDesc, content)) {
+    if (!checkForm(type,title,tag, summary, state, order, imgUrl, sourceType, sourceDesc, content)) {
         return false;
     }
     // js 获取文件对象
@@ -283,7 +309,9 @@ function submitForm() {
     var fileObj = document.getElementById("news_img_url").files[0];
     var param = new FormData();
     param.append("optType", optType);
+    param.append("type", type);
     param.append("title", title);
+    param.append("tag",tag);
     param.append("summary", summary);
     param.append("state", state);
     param.append("order", order);
@@ -328,10 +356,17 @@ function submitForm() {
 }
 
 //检查表单非空项
-function checkForm(title, summary, state, order, imgUrl, sourceType, sourceDesc, content) {
-    var title = $("#news_title").val();
+function checkForm(type,title,tag, summary, state, order, imgUrl, sourceType, sourceDesc, content) {
+    if (!sourceType) {
+        alert("请选择类型！");
+        return false;
+    }
     if (!title) {
         alert("请输入标题！");
+        return false;
+    }
+    if (!title) {
+        alert("请输入标签！");
         return false;
     }
     if (state == undefined) {
