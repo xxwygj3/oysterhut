@@ -46,4 +46,8 @@ public class ResultCode {
      * 上传文件大小不能超过{0}M,请重新选择
      */
     public static final String CODE_009 = "009";
+    /**
+     * 必要参数{0}缺失或格式不正确
+     */
+    public static final String CODE_010 = "010";
 }

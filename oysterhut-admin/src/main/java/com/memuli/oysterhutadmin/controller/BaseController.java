@@ -3,6 +3,7 @@ package com.memuli.oysterhutadmin.controller;
 import com.memuli.oysterhutadmin.config.UploadConfig;
 import com.memuli.oysterhutadmin.constant.ResultCode;
 import com.memuli.oysterhutadmin.entity.SysUser;
+import com.memuli.oysterhutadmin.service.HutCommentService;
 import com.memuli.oysterhutadmin.service.HutNewsService;
 import com.memuli.oysterhutadmin.service.HutRotatePicService;
 import com.memuli.oysterhutadmin.service.SysUserService;
@@ -65,4 +66,7 @@ public class BaseController {
     protected SysUserService sysUserService;
     @Autowired
     protected HutRotatePicService hutRotatePicService;
+    @Autowired
+    protected HutCommentService hutCommentService;
+
 }

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ME牡蛎小屋后台管理系统--评论管理</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="bootstraptable/css/bootstrap-table.css" rel="stylesheet"/>
+    <link rel="shortcut icon" href="/img/face_head.ico">
+    <script src="js/ctrl/commonJS.js"></script>
+    <script src="js/ctrl/commentMagCtrl.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div id="headerComponent" class="row-fluid" style="background-color:#00c0ff;height: 100px;"></div>
+    <div class="row-fluid">
+        <div id="leftComponent" class="span2"
+             style="font-size: 18px;height:800px;overflow:auto;background-color: lightgoldenrodyellow;"></div>
+        <div id="rightComponent" class="span10" style="height:800px;overflow:auto;background-color: #dff0d8">
+            <div class="page-header">
+                <h1>
+                    <small>所有评论</small>
+                </h1>
+            </div>
+            <table id="table_server"></table>
+
+            <div id="myModal" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">
+                        评论管理详情
+                    </h3>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" id="comment_form" target="my_iframe">
+                        <div class="control-group">
+                            <label class="control-label">内容：</label>
+                            <div class="controls" id="comment_content">
+
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">时间：</label>
+                            <div class="controls" id="comment_time">
+
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">类型：</label>
+                            <div class="controls" id="comment_type">
+
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">状态：</label>
+                            <div class="controls" id="comment_state">
+
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">客服回复内容：</label>
+                            <div class="controls" id="comment_service_content">
+                            </div>
+                            <span id="error" style="margin-left: 180px;color: brown;display:none;"></span>
+                        </div>
+                        <div class="control-group" id="comment_service_time_div" style="display:none;">
+                            <label class="control-label">客服回复时间：</label>
+                            <div class="controls" id="comment_service_time">
+
+                            </div>
+                        </div>
+                        <div class="control-group" style="display: none;">
+                            <label class="control-label" for="comment_id">编号：</label>
+                            <div class="controls">
+                                <input id="comment_id" type="hidden" value="1"/>
+                            </div>
+                        </div>
+                    </form>
+                    <iframe id="my_iframe" name="my_iframe" style="display:none;"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true" onclick="clearForm();">关闭</button>
+                    <button class="btn btn-primary" onclick="submitForm();">保存设置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
