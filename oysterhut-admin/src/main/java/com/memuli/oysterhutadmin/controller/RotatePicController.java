@@ -69,7 +69,10 @@ public class RotatePicController extends BaseController {
                 throw new HandleException(new ResultInfo(ResultCode.CODE_005, msa.getMessage(ResultCode.CODE_005)));
             }
             HutRotatePic hutRotatePic = getEntity(loginUser, rotatePicfile, request, optType);
-            hutRotatePicService.insertOrUpdate(hutRotatePic);
+            boolean result = hutRotatePicService.insertOrUpdate(hutRotatePic);
+            if(!result){
+                throw new HandleException(new ResultInfo(ResultCode.CODE_012, msa.getMessage(ResultCode.CODE_012,"轮换图")));
+            }
             respData.setResultInfo(new ResultInfo(ResultCode.CODE_000, msa.getMessage(ResultCode.CODE_000)));
         } catch (HandleException hle) {
             LOGGER.error("RotatePicController.addAndUpdateRotatePic (新增或编辑轮换图) HandleException",hle);

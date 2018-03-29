@@ -1,21 +1,16 @@
-package com.memuli.oysterhutadmin.controller;
+package com.memuli.oysterhutweb.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.memuli.oysterhutadmin.constant.ResultCode;
-import com.memuli.oysterhutadmin.entity.HutComment;
-import com.memuli.oysterhutadmin.entity.HutNews;
-import com.memuli.oysterhutadmin.entity.SysUser;
-import com.memuli.oysterhutadmin.util.HandleException;
-import com.memuli.oysterhutadmin.util.RespData;
-import com.memuli.oysterhutadmin.util.ResultInfo;
-import org.apache.commons.lang3.StringUtils;
+import com.memuli.oysterhutweb.constant.ResultCode;
+import com.memuli.oysterhutweb.entity.HutComment;
+import com.memuli.oysterhutweb.util.RespData;
+import com.memuli.oysterhutweb.util.ResultInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CommentController extends BaseController {
@@ -44,7 +39,7 @@ public class CommentController extends BaseController {
         return respData;
     }
 
-    //客服回复评论
+    /*//客服回复评论
     @PostMapping("/comment/replayComment")
     public RespData replayComment(HttpServletRequest request){
         LOGGER.info("CommentController.replayComment (客服回复评论) Request Parameters:");
@@ -85,9 +80,9 @@ public class CommentController extends BaseController {
         }
         LOGGER.info("CommentController.replayComment (客服回复评论) Response parameter:" + respData.toJsonString());
         return respData;
-    }
+    }*/
 
-    //删除评论
+    /*//删除评论
     @PostMapping("/comment/delComment")
     public RespData delComment(HttpServletRequest request){
         LOGGER.info("CommentController.delComment (删除评论) Request Parameters:");
@@ -123,5 +118,5 @@ public class CommentController extends BaseController {
         }
         LOGGER.info("CommentController.delComment (删除评论) Response parameter:" + respData.toJsonString());
         return respData;
-    }
+    }*/
 }

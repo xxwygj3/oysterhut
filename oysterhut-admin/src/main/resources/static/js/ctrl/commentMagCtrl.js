@@ -59,9 +59,7 @@ var dataColumns = [
         field: 'state',
         align: 'center',
         formatter: function (value, row, index) {//自定义显示，这三个参数分别是：value该行的属性，row该行记录，index该行下标
-            if (row.state == "7") {
-                return "待审";
-            } else if (row.state == "8") {
+            if (row.state == "8") {
                 return "通过";
             } else if (row.state == "9") {
                 return "删除";
@@ -212,9 +210,7 @@ function showModel(index) {
         $("#comment_type").html("-");
     }
     var state = list_index_value.state;
-    if (state == "7") {
-        $("#comment_state").html("待审");
-    } else if (state == "8") {
+    if (state == "8") {
         $("#comment_state").html("通过");
     } else if (state == "9") {
         $("#comment_state").html("删除");
@@ -228,7 +224,7 @@ function showModel(index) {
         $("#comment_service_time_div").hide();
     }else if(serviceState == "8"){//客服已回复
         $("#comment_service_content").html(list_index_value.serviceContent);
-        $("#comment_service_time").html(list_index_value.serviceTime);
+        $("#comment_service_time").html(formatDate(list_index_value.serviceTime));
         $("#comment_service_time_div").show();
     }
     $("#comment_id").val(list_index_value.id);
@@ -253,6 +249,7 @@ function submitContent(){
             $("#error").html(result.resultInfo.message).show();
         }
     });
+    return false;
 }
 
 //清空表单
@@ -266,67 +263,21 @@ function clearForm() {
 }
 
 //提交表单
-function submitForm() {
-    var type = $("#news_type_select").val();
-    var title = $("#news_title").val();
-    var tag = $("#news_tag_val").val();
-    var summary = $("#news_summary").val();
-    var state = $("[name='news_state']:checked").val();
-    var order = $("#news_display_order").val();
-    var imgUrl = $("#preview_image_div").find("img").attr("src");
-    var sourceType = $("#news_source_type").val();
-    var sourceDesc = $("#news_source_desc").val();
-    if (!checkForm(type, title, tag, summary, state, order, imgUrl, sourceType, sourceDesc, content)) {
+function submitDelComment() {
+    if(!confirm("确认删除评论吗?")){
         return false;
     }
-    // js 获取文件对象
-    var id = $("#news_id").val();
-    var fileObj = document.getElementById("news_img_url").files[0];
-    var param = new FormData();
-    param.append("optType", optType);
-    param.append("type", type);
-    param.append("title", title);
-    param.append("tag", tag);
-    param.append("summary", summary);
-    param.append("state", state);
-    param.append("order", order);
-    param.append("sourceType", sourceType);
-    param.append("sourceDesc", sourceDesc);
-    param.append("content", content);
-    if (optType == 0) {
-        param.append("newsfile", fileObj);
-        param.append("id", null);
-    } else {
-        if (fileObj != undefined) {
-            param.append("newsfile", fileObj);
+    var id = $("#comment_id").val();
+    $.post("/comment/delComment", {
+        "id":id
+    },function (result) {
+        if (result.resultInfo.status == '000') {
+            alert(result.resultInfo.message);
+            location.reload();
+        } else {
+            alert(result.resultInfo.message);
         }
-        param.append("id", id);
-    }
-    $.ajax(
-        {
-            url: "/news/addAndUpdateNews",
-            contentType: "application/json;charset=UTF-8",
-            type: "POST",
-            data: param,
-            dataType: "json",
-            contentType: false,// 告诉jQuery不要去设置Content-Type请求头
-            processData: false,// 告诉jQuery不要去处理发送的数据
-            beforeSend: function () {
-                console.log("正在进行，请稍候");
-            },
-            success: function (result) {
-                if (result.resultInfo.status == '000') {
-                    alert(result.resultInfo.message);
-                    location.reload();
-                } else {
-                    alert(result.resultInfo.message);
-                }
-            },
-            error: function (result) {
-                alert("请求失败，请稍后再试");
-            }
-        }
-    );
+    });
     return false;
 }
 

@@ -1,4 +1,4 @@
-package com.memuli.oysterhutadmin.entity;
+package com.memuli.oysterhutweb.entity;
 
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;

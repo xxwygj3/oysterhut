@@ -43,7 +43,10 @@ public class UserController extends BaseController {
             EntityWrapper<SysUser> wrapper = new EntityWrapper<SysUser>();
             wrapper.eq("nickname", name);
             wrapper.eq("status", 1);
-            sysUserService.update(user, wrapper);
+            boolean result = sysUserService.update(user, wrapper);
+            if(!result){
+                throw new HandleException(new ResultInfo(ResultCode.CODE_012, msa.getMessage(ResultCode.CODE_012,"密码")));
+            }
             respData.setResultInfo(new ResultInfo(ResultCode.CODE_000, msa.getMessage(ResultCode.CODE_000)));
         } catch (HandleException hle) {
             LOGGER.error("UserController.modifyPwd (修改密码) HandleException", hle);

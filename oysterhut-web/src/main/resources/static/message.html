@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <title>ME牡蛎小屋--给我留言</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="bootstraptable/css/bootstrap-table.css" rel="stylesheet"/>
     <link rel="shortcut icon" href="/img/face_head.ico">
     <script src="js/jquery.js"></script>
+    <script src="js/jsrender.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/jquery.simplePagination.js"></script>
     <script src="js/ctrl/loadComponent.js"></script>
+    <script src="js/ctrl/messageCtrl.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -25,7 +29,187 @@
         </div>
     </div>
 
-    <div id="footerComponent" style="position: absolute;bottom: 0;width: 96%;"></div>
+    <div class="row-fluid" style="background-color: #f3f3f7;">
+        <div class="span12">
+            <ul class="unstyled" id="hotCommitList" style="background: #fff;margin-bottom: 40px;"></ul>
+            <div class="simple-pagination " id="hotCommitListContainer"></div>
+        </div>
+    </div>
+
+    <div class="row-fluid" style="margin-top:30px;background-color: #f3f3f7;">
+        <div class="span12">
+            <form class="form-horizontal">
+                <fieldset>
+                    <legend>发表评论</legend>
+                    <div class="form-group">
+                        <label class="control-label">昵称：</label>
+                        <div class="controls">
+                            <input type="text" placeholder="请输入昵称" value=""/>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:30px;">
+                        <label class="control-label">留言内容：</label>
+                        <div class="controls">
+                            <span class="help-block">最多可输入200个字符</span>
+                            <textarea placeholder="我也来评论一句…" cols="5" rows="10" maxlength="200"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:30px;">
+                        <label class="control-label">验证码：</label>
+                        <div class="controls">
+                            <input type="text" placeholder="验证码" class="form-control" style="width: 60px;"
+                                   maxlength="5">
+                            <img id="vcodeImg" src="" alt="" style="margin-top: -10px;"/>
+                            <a id="changeImgA">看不清，换一张</a>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:30px;">
+                        <div class="controls">
+                            <button class="btn btn-sm btn-info" type="submit">发表评论</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+<!--    <div class="parent-child female">
+        <div class="wrap">
+            <div class="section-plan" id="planContent" style="display: none">
+                <div class="comment" id="comment">
+                    <div class="commit-title">热门评论<span class="comment-num"></span></div>
+                    <div class="commit-edit clearfix">
+                        <div class="edit-head"><img class="commitHeadImg" src=""></div>
+                        <textarea placeholder="我也来评论一句…" maxlength="300" class="edit-content edit-content1"></textarea>
+                        <div class="commit-btn" onclick="replyCommit(1);">发布</div>
+                    </div>
+                    <ul id="hotCommitList" style="background: #fff;margin-bottom: 40px;"></ul>
+                    <div class="simple-pagination " id="hotCommitListContainer"></div>
+                </div>
+            </div>
+
+            <div class="section-box section-activity" id="activityList" style="display: none">
+                <div class="title text-center">
+                    <img class="room-title" src="/img/parent-child/activity-title.png" alt="title">
+                </div>
+                <ul class="activity-list">
+                    <li v-for="item in newsListInfo.dataList">
+                        <a :href="'/views/common/parentChild.html?pageAt=activityDetail&newsId=' + item.newsId"
+                           target="_blank">
+                            <div class="cover-img">
+                                <img :src="item.resUri" class="img-responsive" alt="cover img">
+                            </div>
+                            <div class="activity-title ell">{{item.newsTitle}}</div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+                <div class="pagination-nav text-center">
+                    <a href="" class="pre">
+                        <i class="icon icon-angle-left"></i>
+                    </a>
+                    <div class="page-num">
+                        <span class="current">{{newsListInfo.pageIndex}}</span>/
+                        <span class="total">{{newsListInfo.totalPage}}</span>
+                    </div>
+                    <a href="" class="next">
+                        <i class="icon icon-angle-right active"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="section-box section-activity-detail" id="activityDetail" style="display: none">
+                <div class="detail-top">
+                    <div class="title text-center">{{newsDetail.newsTitle}}</div>
+                    <div class="date text-right">时间：{{newsDetail.newsTime}}</div>
+                    <div class="content" v-html="newsDetail.newsContent"></div>
+                </div>
+                <div class="comment">
+                    <div class="commit-title">评论<span class="comment-num"></span></div>
+                    <div class="commit-edit clearfix">
+                        <div class="edit-head"><img class="commitHeadImg" src=""></div>
+                        <textarea placeholder="我也来评论一句…" class="edit-content edit-content3" maxlength="300"></textarea>
+                        <div class="commit-btn" onclick="replyCommit(3);">发布</div>
+                    </div>
+                    <ul id="commitList" style="background: #fff;margin-bottom: 40px;"></ul>
+                    <div class="simple-pagination " id="commitListContainer"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="reply" class="reply-float female" style="display: none">
+            <div class="mask" style="display: block"></div>
+            <div class="item-box">
+                <a href="javascript:;" onclick="closeReply(this);" class="close">×</a>
+                <div class="reply-content">
+                    <div class="commit-reply">
+                        <div class="edit-head"><img id="headImg" src=""></div>
+                        <div class="reply-content">
+                            <div class="reply-name" id="replyNick" alt></div>
+                            <div class="reply-time" id="replyTime"></div>
+                            <div class="reply-text" id="replyContent"></div>
+                            <ul id="replyList" class="reply-top">
+                            </ul>
+                            <div class="simple-pagination " id="replyListContainer"></div>
+                            <input class="reply-in" placeholder="输入内容回复">
+                            <div class="reply-btn2" onclick="replyCommit(2);">回复</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    <div style="margin-top:30px;"></div>
+    <div id="footerComponent"></div>
 </div>
 </body>
+
+<script type="text/x-jsrender" id="hotCommitListJs">
+{{for}}
+    <div class="commit-reply"  alt="{{:cmtCode}}">
+        <div class="reply-content clearfix">
+            <div class="reply-name">{{:cmtCode}}</div>
+            <div class="reply-btn" onclick="reply(this);">回复</div>
+            <div class="reply-time">{{:cmtTime}}</div>
+            <div class="reply-text">{{:content}}</div>
+            {{if replyCount >= 1}}
+                <div class="see-reply"><a href="javascript:void(0);" onclick="seeAll(this);">查看全部<span>{{:replyCount}}</span>条回复 >></a></div>
+            {{/if}}
+        </div>
+    </div>
+{{/for}}
+</script>
+<!--<script type="text/x-jsrender" id="commitListJs">-->
+<!--{{for}}-->
+    <!--<div class="commit-reply" alt="{{:cmtCode}}">-->
+        <!--<div class="edit-head"><img class=reply-img src="{{:imgUrl}}"></div>-->
+        <!--<div class="reply-content clearfix">-->
+            <!--<div class="reply-name">{{:nickName}}</div>-->
+            <!--<div class="reply-time">{{:cmtTime}}</div>-->
+            <!--<div class="reply-text">{{:cmtContent}}</div>-->
+            <!--{{if replyContent}}-->
+            <!--<div class="cus-reply reply-content">-->
+                <!--<div class="reply-name">客服回复</div>-->
+                <!--<div class="reply-time">{{:replyTime}}</div>-->
+                <!--<div class="reply-text"><span class="replyName">@{{:nickName}}</span>{{:replyContent}}</div>-->
+            <!--</div>-->
+            <!--{{/if}}-->
+        <!--</div>-->
+    <!--</div>-->
+<!--{{/for}}-->
+<!--</script>-->
+<!--<script type="text/x-jsrender" id="replyListJs">-->
+<!--{{for}}-->
+    <!--<div class="commit-reply" style="width: 840px;">-->
+        <!--<div class="edit-head"><img src="{{:imgUrl}}"></div>-->
+        <!--<div class="reply-content clearfix">-->
+            <!--<div class="reply-name">{{:nickName}}</div>-->
+            <!--<div class="reply-btn" onclick="replyReply(this);" alt="{{:cmtCode}}">回复</div>-->
+            <!--<div class="reply-time">{{:cmtTime}}</div>-->
+            <!--<div class="reply-text"><span class="replyName">@{{:replyNickName}}</span>{{:cmtContent}}</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--{{/for}}-->
+<!--</script>-->
+
 </html>

@@ -65,7 +65,10 @@ public class NewsController extends BaseController {
                 throw new HandleException(new ResultInfo(ResultCode.CODE_005, msa.getMessage(ResultCode.CODE_005)));
             }
             HutNews hutNews = getHutNewsEntity(loginUser, newsfile, request, optType);
-            hutNewsService.insertOrUpdate(hutNews);
+            boolean result = hutNewsService.insertOrUpdate(hutNews);
+            if(!result){
+                throw new HandleException(new ResultInfo(ResultCode.CODE_012, msa.getMessage(ResultCode.CODE_012,"新闻")));
+            }
             respData.setResultInfo(new ResultInfo(ResultCode.CODE_000, msa.getMessage(ResultCode.CODE_000)));
         } catch (HandleException hle) {
             LOGGER.error("NewsController.addAndUpdateNews (新增或编辑新闻) HandleException",hle);

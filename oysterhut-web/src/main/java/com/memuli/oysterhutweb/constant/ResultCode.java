@@ -1,4 +1,4 @@
-package com.memuli.oysterhutadmin.constant;
+package com.memuli.oysterhutweb.constant;
 
 public class ResultCode {
     /**
