@@ -9,35 +9,96 @@ import com.memuli.oysterhutweb.util.ResultInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class CommentController extends BaseController {
     private static final Logger LOGGER = LoggerFactory.getLogger(CommentController.class);
 
-    //分页查询评论列表
+    //分页查询留言列表
     @GetMapping("/comment/getCommentList")
-    public RespData getCommentList(@RequestParam(value = "offset",defaultValue = "1")Integer offset, @RequestParam (value = "limit",defaultValue = "10")Integer limit) {
-        LOGGER.info("CommentController.getCommentList (分页查询评论列表) Request Parameters:+{'offset':" + offset + ",'limit':" + limit + "}");
+    public RespData getCommentList(@RequestParam (value = "current",defaultValue = "1")Integer current, @RequestParam (value = "size",defaultValue = "10")Integer size,HttpServletRequest request) {
+        LOGGER.info("CommentController.getCommentList (分页查询评论列表) Request Parameters:+{'current':" + current + ",'size':" + size + "}");
         RespData respData = new RespData();
         try {
-            //当前页码:pageIndex = offset/limit+1;limit每页的个数,offset分页时数据的偏移量
-            Integer pageIndex = (offset + limit) / limit;
-            Page<HutComment> page = new Page<HutComment>(pageIndex, limit);
+            Page<HutComment> page = new Page<HutComment>(current, size);
             EntityWrapper<HutComment> wrapper = new EntityWrapper<HutComment>();
-            wrapper.orderBy("cmt_time",false);//评论时间降序
+            wrapper.eq("topic_id","留言");//主题ID
+            wrapper.eq("topic_type","1");//主题类型1留言
+            wrapper.eq("cmt_type","1");//类型1留言
+            wrapper.orderBy("cmt_time", false);//评论时间降序
             page = hutCommentService.selectPage(page, wrapper);
             respData.addObject("total", page.getTotal());
             respData.addObject("rows", page.getRecords());
             respData.setResultInfo(new ResultInfo(ResultCode.CODE_000, msa.getMessage(ResultCode.CODE_000)));
         } catch (Exception e) {
-            LOGGER.error("CommentController.getCommentList (分页查询评论列表) Exception",e);
+            LOGGER.error("CommentController.getCommentList (分页查询评论列表) Exception", e);
             respData.setResultInfo(new ResultInfo(ResultCode.CODE_999, msa.getMessage(ResultCode.CODE_999)));
         }
         LOGGER.info("CommentController.getCommentList (分页查询评论列表) Response parameter:" + respData.toJsonString());
         return respData;
     }
+
+    //获取访问者IP地址
+    private static String getRemoteAddress(HttpServletRequest request) {
+        String ip = request.getHeader("X-Forwarded-For");
+        if (null == ip || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) {
+            ip = request.getHeader("Proxy-Client-IP");
+        }
+        if (null == ip || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) {
+            ip = request.getHeader("WL-Proxy-Client-IP");
+        }
+        if (null == ip || ip.length() == 0 || ip.equalsIgnoreCase("unknown")) {
+            ip = request.getRemoteAddr();
+        }
+        if (ip.length() > 128) {
+            ip = ip.substring(0, 128);
+        }
+        return ip;
+    }
+
+//    //给我留言
+//    @PostMapping("/comment/createComment")
+//    public RespData modifyPwd(HttpServletRequest request) {
+//        LOGGER.info("UserController.modifyPwd (修改密码) Request Parameters:开始");
+//        RespData respData = new RespData();
+//        try {
+//            //获取当前用户信息
+//            SysUser loginUser = getCurrentUser();
+//            if (null == loginUser) {
+//                throw new HandleException(new ResultInfo(ResultCode.CODE_005, msa.getMessage(ResultCode.CODE_005)));
+//            }
+//            String name = loginUser.getNickname();
+//            String oldPwd = request.getParameter("oldPwd");
+//            String newPwd = request.getParameter("newPwd");
+//            String newPaw = newPwd + name;
+//            String newPawMD5 = MyMD5.md5Sign(MyMD5.md5Sign(newPaw));//规则md5(md5(password+name))
+//            checkPWD(loginUser, oldPwd, newPwd, newPawMD5);
+//
+//            SysUser user = new SysUser();
+//            user.setPswd(newPawMD5);
+//            EntityWrapper<SysUser> wrapper = new EntityWrapper<SysUser>();
+//            wrapper.eq("nickname", name);
+//            wrapper.eq("status", 1);
+//            boolean result = sysUserService.update(user, wrapper);
+//            if(!result){
+//                throw new HandleException(new ResultInfo(ResultCode.CODE_012, msa.getMessage(ResultCode.CODE_012,"密码")));
+//            }
+//            respData.setResultInfo(new ResultInfo(ResultCode.CODE_000, msa.getMessage(ResultCode.CODE_000)));
+//        } catch (HandleException hle) {
+//            LOGGER.error("UserController.modifyPwd (修改密码) HandleException", hle);
+//            respData.setResultInfo(hle.getResultInfo());
+//        } catch (Exception e) {
+//            LOGGER.error("UserController.modifyPwd (修改密码) Exception", e);
+//            respData.setResultInfo(new ResultInfo(ResultCode.CODE_999, msa.getMessage(ResultCode.CODE_999)));
+//        }
+//        LOGGER.info("UserController.modifyPwd (修改密码) Response parameter:结束");
+//        return respData;
+//    }
 
     /*//客服回复评论
     @PostMapping("/comment/replayComment")

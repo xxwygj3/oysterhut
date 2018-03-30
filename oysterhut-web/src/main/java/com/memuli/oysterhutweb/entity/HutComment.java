@@ -90,6 +90,12 @@ public class HutComment extends Model<HutComment> {
     private String replyUcode;
 
     /**
+     * 回复总记录
+     */
+    @TableField(exist = false)
+    private Integer replyCount;
+
+    /**
      * 指定主键
      */
     @Override
