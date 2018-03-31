@@ -16,10 +16,10 @@ public class HutComment extends Model<HutComment> {
     @TableField(value = "cmt_code")
     private String cmtCode;
     /**
-     * 评论人用户编号
+     * 评论人用户昵称
      */
-    @TableField(value = "cmt_ucode")
-    private String cmtUcode;
+    @TableField(value = "cmt_nick_name")
+    private String cmtNickName;
     /**
      * 类型 1评论、2回复
      */
@@ -30,11 +30,6 @@ public class HutComment extends Model<HutComment> {
      */
     @TableField(value = "topic_id")
     private String topicId;
-    /**
-     * 主题类型
-     */
-    @TableField(value = "topic_type")
-    private String topicType;
     /**
      * 内容
      */
@@ -48,11 +43,6 @@ public class HutComment extends Model<HutComment> {
      */
     @TableField(value = "cmt_time")
     private Date cmtTime;
-    /**
-     * 查看状态 7待检查、8已检查
-     */
-    @TableField(value = "check_state")
-    private String checkState;
     /**
      * 客服回复状态 7未回复、8已回复
      */
@@ -84,10 +74,10 @@ public class HutComment extends Model<HutComment> {
     @TableField(value = "reply_code")
     private String replyCode;
     /**
-     * 回复人用户编号
+     * 回复人用户昵称
      */
-    @TableField(value = "reply_ucode")
-    private String replyUcode;
+    @TableField(value = "reply_nick_name")
+    private String replyNickName;
 
     /**
      * 指定主键
@@ -113,12 +103,12 @@ public class HutComment extends Model<HutComment> {
         this.cmtCode = cmtCode;
     }
 
-    public String getCmtUcode() {
-        return cmtUcode;
+    public String getCmtNickName() {
+        return cmtNickName;
     }
 
-    public void setCmtUcode(String cmtUcode) {
-        this.cmtUcode = cmtUcode;
+    public void setCmtNickName(String cmtNickName) {
+        this.cmtNickName = cmtNickName;
     }
 
     public String getCmtType() {
@@ -135,14 +125,6 @@ public class HutComment extends Model<HutComment> {
 
     public void setTopicId(String topicId) {
         this.topicId = topicId;
-    }
-
-    public String getTopicType() {
-        return topicType;
-    }
-
-    public void setTopicType(String topicType) {
-        this.topicType = topicType;
     }
 
     public String getContent() {
@@ -167,14 +149,6 @@ public class HutComment extends Model<HutComment> {
 
     public void setCmtTime(Date cmtTime) {
         this.cmtTime = cmtTime;
-    }
-
-    public String getCheckState() {
-        return checkState;
-    }
-
-    public void setCheckState(String checkState) {
-        this.checkState = checkState;
     }
 
     public String getServiceState() {
@@ -225,11 +199,11 @@ public class HutComment extends Model<HutComment> {
         this.replyCode = replyCode;
     }
 
-    public String getReplyUcode() {
-        return replyUcode;
+    public String getReplyNickName() {
+        return replyNickName;
     }
 
-    public void setReplyUcode(String replyUcode) {
-        this.replyUcode = replyUcode;
+    public void setReplyNickName(String replyNickName) {
+        this.replyNickName = replyNickName;
     }
 }

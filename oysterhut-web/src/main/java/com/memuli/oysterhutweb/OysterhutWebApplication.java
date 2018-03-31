@@ -7,9 +7,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 // 扫描指定包下面的mapper接口
 @MapperScan("com.memuli.oysterhutweb.dao")
+@EnableTransactionManagement// 启注解事务管理
 @SpringBootApplication
 public class OysterhutWebApplication {
 	@Value("${spring.messages.basename}")

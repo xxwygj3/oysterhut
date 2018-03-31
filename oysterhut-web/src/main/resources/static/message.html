@@ -34,10 +34,10 @@
             <div id="articleComment" style="width: 862px;margin: 0 auto;">
                 <div id="commentItems" class="ui threaded comments" style="margin-bottom:20px;">
                     <div class="text" style="font-size:30px;padding-bottom:10px;border-bottom: 1px solid #dfdfdf;">
-                        大家的留言(5条)
+                        大家的留言(<span id="comment_count"></span>条)
                     </div>
 
-                    <form class="form-horizontal" style="background: #fff;margin-bottom: 30px;margin-top:30px;">
+                    <form class="form-horizontal" style="background: #fff;margin-bottom: 30px;margin-top:30px;" target="my_iframe">
                         <div class="form-group">
                             <label class="control-label" for="comment_nick_name"></span>昵称：</label>
                             <div class="controls">
@@ -65,7 +65,7 @@
                             <div class="controls">
                                 <input type="text" id="comment_vcode" placeholder="验证码" class="form-control"
                                        style="width: 60px;"
-                                       maxlength="5">
+                                       maxlength="4">
                                 <img id="vcodeImg" src="" alt="" style="margin-top: -10px;"/>
                                 <a id="changeImgA">看不清，换一张</a>
                             </div>
@@ -81,28 +81,11 @@
                             </div>
                         </div>
                     </form>
-
-                    <ul id="hotCommitList" style="background: #fff;margin-bottom: 40px;">
-                        <!--<div class="commit-reply" style="width: 862px;margin: 32px auto 0;padding-top: 12px;">
-                            <div class="edit-head"
-                                 style="border-radius: 50px;background: #f3f3f7;display: inline-block;vertical-align: top;margin-right: 20px;">
-                                <img src="img/blog.png" class="reply-img" style="width: 50px;height: 50px;"/>
-                            </div>
-                            <div class="reply-content clearfix"
-                                 style="display: inline-block;font-size: 14px;color: #333;width: 760px;border-bottom: 1px solid #d9d9d9;line-height: 24px;padding-bottom: 20px;">
-                                <div class="reply-name"
-                                     style="font-size: 16px;display: inline-block;vertical-align: top;">嗨起来
-                                </div>
-                                <div class="reply-btn" style="float: right;color: #630;cursor: pointer;">回复</div>
-                                <div class="reply-time" style="color: #b8b8b8;">2018-03-01 13:51:24</div>
-                                <div class="reply-text" style="word-wrap: break-word;">
-                                    命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦命苦
-                                </div>
-                            </div>
-                        </div>-->
+                    <iframe id="my_iframe" name="my_iframe" style="display:none;"></iframe>
+                    <ul id="hotCommitList" style="margin-bottom: 40px;margin-left: 0px;">
                     </ul>
                     <div class="simple-pagination" id="hotCommitListContainer"
-                         style="position:relative;left:50%;"></div>
+                         style="margin-left: 40%;"></div>
                 </div>
             </div>
         </div>
@@ -115,37 +98,39 @@
 
 <script type="text/x-jsrender" id="hotCommitListJs">
 {{for}}
-    <!--<div class="commit-reply"  alt="{{:cmtCode}}">
-        <div class="reply-content clearfix">
-            <div class="reply-name">{{:cmtCode}}</div>
-            <div class="reply-btn" onclick="reply(this);">回复</div>
-            <div class="reply-time">{{:cmtTime}}</div>
-            <div class="reply-text">{{:content}}</div>
-            {{if replyCount >= 1}}
-                <div class="see-reply"><a href="javascript:void(0);" onclick="seeAll(this);">查看全部<span>{{:replyCount}}</span>条回复 >></a></div>
-            {{/if}}
-        </div>
-    </div>-->
-    <div class="commit-reply" alt="{{:cmtCode}}" style="width: 862px;margin: 32px auto 0;padding-top: 12px;">
+    <div class="commit-reply" alt="{{:cmtCode}}" style="width: 862px;margin: auto 0;background: #fff;padding-top: 12px;border: 1px solid #d9d9d9;">
         <div class="edit-head"
              style="border-radius: 50px;background: #f3f3f7;display: inline-block;vertical-align: top;margin-right: 20px;">
             <img src="img/blog.png" class="reply-img" style="width: 50px;height: 50px;"/>
         </div>
-        <div class="reply-content clearfix"
-             style="display: inline-block;font-size: 14px;color: #333;width: 760px;border-bottom: 1px solid #d9d9d9;line-height: 24px;padding-bottom: 20px;">
+        <div class="reply-content"
+             style="display: inline-block;font-size: 14px;color: #333;width: 785px;line-height: 24px;">
             <div class="reply-name"
-                 style="font-size: 16px;display: inline-block;vertical-align: top;">嗨起来
+                 style="font-size: 16px;display: inline-block;vertical-align: top;">{{:cmtNickName}}
             </div>
-            <div class="reply-btn" style="float: right;color: #630;cursor: pointer;">回复</div>
+            <div class="reply-btn" style="float: right;color: #630;cursor: pointer;"><span name="change_current"></span>第{{:#getIndex()+1}}条</div>
             <div class="reply-time" style="color: #b8b8b8;">{{dateFormat:cmtTime}}</div>
-            <div class="reply-text" style="word-wrap: break-word;">
+            <div class="reply-text" style="word-wrap: break-word;border-bottom: 1px solid #d9d9d9;">
                 {{:content}}
             </div>
+            {{if serviceState == 8}}
+            <div class="commit-reply" style="width: 840px;padding-top: 12px;">
+                <div class="edit-head" style="border-radius: 50px;background: #f3f3f7;display: inline-block;vertical-align: top;margin-right: 20px;">
+                    <img src="img/blog.png" class="reply-img" style="width: 50px;height: 50px;"/>
+                </div>
+                <div class="reply-content" style="display: inline-block;font-size: 14px;color: #333;width: 690px;line-height: 24px;">
+                    <div class="reply-name">站长<span class="replyName">  @{{:cmtNickName}}</span></div>
+                    <div class="reply-time" style="color: #b8b8b8;">{{dateFormat:serviceTime}}</div>
+                    <div class="reply-text" style="word-wrap: break-word;">
+                        {{:serviceContent}}
+                    </div>
+                </div>
+            </div>
+            {{/if}}
         </div>
     </div>
+    <div style="width: 862px;margin: auto 0;margin-top:5px;background-color: #f3f3f7;"></div>
 {{/for}}
-
-
 </script>
 <script type="text/x-jsrender" id="commitListJs">
 {{for}}
@@ -165,9 +150,6 @@
 </div>
 </div>
 {{/for}}
-
-
-
 </script>
 <script type="text/x-jsrender" id="replyListJs">
 {{for}}
@@ -181,8 +163,5 @@
 </div>
 </div>
 {{/for}}
-
-
 </script>
-
 </html>

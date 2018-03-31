@@ -41,7 +41,7 @@ public class InitController {
             response.setDateHeader("Expires", 0);
             response.setContentType("image/jpg");
             //jpg格式动画验证码:宽，高，位数
-            Captcha captcha = new Captcha(140,30,5);
+            Captcha captcha = new Captcha(140,30,4);
             //输出
             captcha.out(response.getOutputStream(),request);
         } catch (Exception e) {

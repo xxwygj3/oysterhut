@@ -18,22 +18,11 @@ $(function () {
         random = Math.random();
         $("#vcodeImg").attr("src", '/getJpgCode?' + random);
     });
-    $("#hotCommitListContainer").pagination({
-        //items: totalCount,
-        items: 10,//用来计算页数的项目总数。
-        itemsOnPage: 10,//每个页面显示的项目数。
-        edges: 1,//当页面数量比较多的时候，在最后Prev后和Next前的页面数（如上图light-theme和compact-theme是2，dark-theme是3）。
-        prevText: '上一页',//“上一页”显示的文字。
-        nextText: '下一页',//“下一页”显示的文字。
-        cssStyle: 'light-theme',
-        // onPageClick: function (idx) {
-        //     pagingQuery(idx);
-        // }
-        onPageClick: changePage
-    });
-    getCommentList(1,10);
+    var current = 1;
+    var size = 10;
+    getCommentList(current,size);
 });
-
+//分布查询留言
 function getCommentList(current,size) {
     var query = {
         "current":current,
@@ -51,11 +40,24 @@ function getCommentList(current,size) {
             if (result.resultInfo.status == "000") {
                 var countList = result.resultMap;
                 var maxCount = countList.total;
+                $("#comment_count").html(maxCount);
                 if(!maxCount || maxCount == 0){
                     $('#hotCommitListContainer').hide();
                 }else{
                     $("#hotCommitList").html($("#hotCommitListJs").render(result.resultMap.rows));
-                    //callback && callback(countList);
+                    $("[name='change_current']").html("第"+current+"页，");
+                    $("#hotCommitListContainer").pagination({
+                        items: maxCount,//用来计算页数的项目总数。
+                        currentPage:current,//选择的页面。
+                        itemsOnPage: 10,//每个页面显示的项目数。
+                        edges: 1,//当页面数量比较多的时候，在最后Prev后和Next前的页面数（如上图light-theme和compact-theme是2，dark-theme是3）。
+                        prevText: '上一页',//“上一页”显示的文字。
+                        nextText: '下一页',//“下一页”显示的文字。
+                        cssStyle: 'compact-theme',
+                        onPageClick: function changePage(idx){
+                            getCommentList(idx,10);
+                        }
+                    });
                 }
             } else {
                 alert(result.resultInfo.message);
@@ -65,17 +67,6 @@ function getCommentList(current,size) {
             alert("请求失败，请稍后再试");
         }
     });
-    // query = {};
-    // query.limit = limit;
-    // pagingQuery(offset, function (countList) {
-    //     productPaginQuery(countList.total);
-    // });
-}
-
-
-function changePage() {
-    var idx = $(".active .current").html();
-    console.log("changePage" + idx);
 }
 
 //评论
@@ -92,7 +83,7 @@ function submitForm() {
         "topicId":"留言",
         "topicType":"1",
         "nickName": nickName,
-        "email": newPwd,
+        "email": email,
         "content":content,
         "vcode":vcode
     };
@@ -132,23 +123,3 @@ function checkForm(content, vcode) {
     }
     return true;
 }
-
-//
-// function productPaginQuery(totalCount) {
-//     $("#hotCommitListContainer").pagination({
-//         items: totalCount,
-//         itemsOnPage: 10,
-//         edges: 1,
-//         prevText: '上一页',
-//         nextText: '下一页',
-//         cssStyle: 'light-theme',
-//         onPageClick: function (idx) {
-//             pagingQuery(idx);
-//         }
-//     });
-// }
-//
-// function pagingQuery(offset, callback) {
-//     query.offset = offset || 1;
-//
-// }

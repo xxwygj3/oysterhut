@@ -11,12 +11,18 @@ var dataColumns = [
         align: 'center'
     },
     {
-        title: '编号',//表的列名
+        title: '评论编号',//表的列名
         field: 'cmtCode',//json数据中rows数组中的属性名
         align: 'center'//水平居中
     },
     {
+        title: '评论人用户昵称',
+        field: 'cmtNickName',
+        align: 'center'
+    },
+    {
         title: '时间',
+        width: '130px',
         field: 'cmtTime',
         align: 'center',
         formatter: function (value, row, index) {
@@ -40,11 +46,7 @@ var dataColumns = [
     {
         title: '主题ID',
         field: 'topicId',
-        align: 'center'
-    },
-    {
-        title: '主题类型',
-        field: 'topicType',
+        width: '80px',
         align: 'center'
     },
     {
@@ -81,18 +83,13 @@ var dataColumns = [
         }
     },
     {
-        title: '评论人用户编号',
-        field: 'cmtUcode',
-        align: 'center'
-    },
-    {
         title: '回复评论编号',
         field: 'replyCode',
         align: 'center'
     },
     {
-        title: '回复人用户编号',
-        field: 'replyUcode',
+        title: '回复评论昵称',
+        field: 'replyNickName',
         align: 'center'
     },
     {
@@ -245,6 +242,7 @@ function submitContent(){
     }, function (result) {
         if (result.resultInfo.status == '000') {
             alert(result.resultInfo.message);
+            location.reload();
         } else {
             $("#error").html(result.resultInfo.message).show();
         }

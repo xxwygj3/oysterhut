@@ -4,16 +4,24 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.memuli.oysterhutweb.constant.ResultCode;
 import com.memuli.oysterhutweb.entity.HutComment;
+import com.memuli.oysterhutweb.entity.HutCommentUser;
+import com.memuli.oysterhutweb.util.HandleException;
 import com.memuli.oysterhutweb.util.RespData;
 import com.memuli.oysterhutweb.util.ResultInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RestController
 public class CommentController extends BaseController {
@@ -21,15 +29,15 @@ public class CommentController extends BaseController {
 
     //分页查询留言列表
     @GetMapping("/comment/getCommentList")
-    public RespData getCommentList(@RequestParam (value = "current",defaultValue = "1")Integer current, @RequestParam (value = "size",defaultValue = "10")Integer size,HttpServletRequest request) {
+    public RespData getCommentList(@RequestParam(value = "current", defaultValue = "1") Integer current, @RequestParam(value = "size", defaultValue = "10") Integer size, HttpServletRequest request) {
         LOGGER.info("CommentController.getCommentList (分页查询评论列表) Request Parameters:+{'current':" + current + ",'size':" + size + "}");
         RespData respData = new RespData();
         try {
             Page<HutComment> page = new Page<HutComment>(current, size);
             EntityWrapper<HutComment> wrapper = new EntityWrapper<HutComment>();
-            wrapper.eq("topic_id","留言");//主题ID
-            wrapper.eq("topic_type","1");//主题类型1留言
-            wrapper.eq("cmt_type","1");//类型1留言
+            wrapper.eq("topic_id", "给我留言");//主题ID
+            wrapper.eq("cmt_type", "1");//类型1评论
+            wrapper.eq("state","8");//状态8通过
             wrapper.orderBy("cmt_time", false);//评论时间降序
             page = hutCommentService.selectPage(page, wrapper);
             respData.addObject("total", page.getTotal());
@@ -41,6 +49,102 @@ public class CommentController extends BaseController {
         }
         LOGGER.info("CommentController.getCommentList (分页查询评论列表) Response parameter:" + respData.toJsonString());
         return respData;
+    }
+
+    //给我留言
+    @Transactional
+    @PostMapping("/comment/createComment")
+    public RespData createComment(HttpServletRequest request) {
+        LOGGER.info("CommentController.createComment (给我留言) Request Parameters:开始");
+        RespData respData = new RespData();
+        try {
+            String vcode = request.getParameter("vcode");
+            if (StringUtils.isBlank(vcode)) {
+                throw new HandleException(ResultCode.CODE_001, msa.getMessage(ResultCode.CODE_001, "验证码"));
+            }
+            String content = request.getParameter("content");
+            if (StringUtils.isBlank(content)) {
+                throw new HandleException(ResultCode.CODE_001, msa.getMessage(ResultCode.CODE_001, "留言内容"));
+            }
+            HttpSession session = request.getSession(true);
+            //转化成小写字母
+            vcode = vcode.toLowerCase();
+            String v = (String) session.getAttribute("_code");
+            //还可以读取一次后把验证码清空，这样每次登录都必须获取验证码
+            session.removeAttribute("_come");
+            if (!vcode.equals(v)) {
+                throw new HandleException(ResultCode.CODE_002, msa.getMessage(ResultCode.CODE_002));
+            }
+            String nickName = request.getParameter("nickName");
+            String email = request.getParameter("email");
+            HutComment hutComment = getHutComment(nickName,content);
+            boolean result1 = hutCommentService.insert(hutComment);
+            HutCommentUser hutCommentUser = getHutCommentUser(request,hutComment.getCmtCode(),nickName,email);
+            boolean result2 = hutCommentUserService.insert(hutCommentUser);
+            if (!result1 || !result1) {
+                TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+                throw new HandleException(new ResultInfo(ResultCode.CODE_011, msa.getMessage(ResultCode.CODE_011, "留言")));
+            }
+            respData.setResultInfo(new ResultInfo(ResultCode.CODE_000, msa.getMessage(ResultCode.CODE_000)));
+        } catch (HandleException hle) {
+            LOGGER.error("CommentController.createComment (给我留言) HandleException", hle);
+            respData.setResultInfo(hle.getResultInfo());
+        } catch (Exception e) {
+            LOGGER.error("CommentController.createComment (给我留言) Exception", e);
+            respData.setResultInfo(new ResultInfo(ResultCode.CODE_999, msa.getMessage(ResultCode.CODE_999)));
+        }
+        LOGGER.info("CommentController.createComment (给我留言) Response parameter:结束" + respData.toJsonString());
+        return respData;
+    }
+
+    private HutComment getHutComment(String nickName,String content){
+        HutComment hutComment = new HutComment();
+        LOGGER.info("CommentController.createComment (给我留言) ：开始获取数据库序列值");
+        Integer hutCommentId = hutCommentService.selectSequence();
+        LOGGER.info("CommentController.createComment (给我留言) ：获取数据库序列值成功，值为" + hutCommentId);
+        hutComment.setId(hutCommentId);
+        hutComment.setCmtCode(createCommetCode(hutCommentId));
+        hutComment.setCmtNickName(StringUtils.isNotBlank(nickName) ? nickName : "匿名");
+        hutComment.setCmtType(1);//类型1评论
+        hutComment.setTopicId("给我留言");//主题ID
+        hutComment.setContent(content);//内容
+        hutComment.setState("8");//状态8通过
+        hutComment.setCmtTime(new Date());//评论时间
+        hutComment.setServiceState("7");//客服回复状态7未回复
+        return hutComment;
+    }
+
+    private HutCommentUser getHutCommentUser(HttpServletRequest request,String cmtCode,String nickName,String email){
+        HutCommentUser hutCommentUser = new HutCommentUser();
+        LOGGER.info("CommentController.createComment (给我留言) ：开始获取数据库序列值");
+        Integer hutCommentUserId = hutCommentUserService.selectSequence();
+        LOGGER.info("CommentController.createComment (给我留言) ：获取数据库序列值成功，值为" + hutCommentUserId);
+        hutCommentUser.setId(hutCommentUserId);
+        hutCommentUser.setCmtCode(cmtCode);
+        hutCommentUser.setUserType(1);//用户类型1评论人
+        hutCommentUser.setNickName(nickName);//昵称
+        hutCommentUser.setEmail(email);//邮箱
+        hutCommentUser.setUserIp(getRemoteAddress(request));//用户IP
+        return hutCommentUser;
+    }
+
+    //生成交易流水号（XXX+YYMMDDHHmmSS+5位序列）
+    private String createCommetCode(Integer seq) {
+        StringBuffer cmtCode = new StringBuffer();
+        cmtCode.append("CMT");
+        cmtCode.append(getNowTimeTo("yyMMddHHmmSS"));// 追加yyMMddHHmmSS
+        String seqLen = String.format("%05d", seq);// 调用数据库查询五位序列
+        cmtCode.append(seqLen.substring(seqLen.length() - 5, seqLen.length()));//截取未五位
+        return cmtCode.toString();
+    }
+
+    //获取当前系统时间
+    private static String getNowTimeTo(String strFormat) {
+        if (strFormat == null || StringUtils.isEmpty(strFormat)) {
+            strFormat = "yyyy-MM-dd HH:mm:ss";
+        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat(strFormat);
+        return dateFormat.format(new Date());
     }
 
     //获取访问者IP地址
@@ -60,45 +164,6 @@ public class CommentController extends BaseController {
         }
         return ip;
     }
-
-//    //给我留言
-//    @PostMapping("/comment/createComment")
-//    public RespData modifyPwd(HttpServletRequest request) {
-//        LOGGER.info("UserController.modifyPwd (修改密码) Request Parameters:开始");
-//        RespData respData = new RespData();
-//        try {
-//            //获取当前用户信息
-//            SysUser loginUser = getCurrentUser();
-//            if (null == loginUser) {
-//                throw new HandleException(new ResultInfo(ResultCode.CODE_005, msa.getMessage(ResultCode.CODE_005)));
-//            }
-//            String name = loginUser.getNickname();
-//            String oldPwd = request.getParameter("oldPwd");
-//            String newPwd = request.getParameter("newPwd");
-//            String newPaw = newPwd + name;
-//            String newPawMD5 = MyMD5.md5Sign(MyMD5.md5Sign(newPaw));//规则md5(md5(password+name))
-//            checkPWD(loginUser, oldPwd, newPwd, newPawMD5);
-//
-//            SysUser user = new SysUser();
-//            user.setPswd(newPawMD5);
-//            EntityWrapper<SysUser> wrapper = new EntityWrapper<SysUser>();
-//            wrapper.eq("nickname", name);
-//            wrapper.eq("status", 1);
-//            boolean result = sysUserService.update(user, wrapper);
-//            if(!result){
-//                throw new HandleException(new ResultInfo(ResultCode.CODE_012, msa.getMessage(ResultCode.CODE_012,"密码")));
-//            }
-//            respData.setResultInfo(new ResultInfo(ResultCode.CODE_000, msa.getMessage(ResultCode.CODE_000)));
-//        } catch (HandleException hle) {
-//            LOGGER.error("UserController.modifyPwd (修改密码) HandleException", hle);
-//            respData.setResultInfo(hle.getResultInfo());
-//        } catch (Exception e) {
-//            LOGGER.error("UserController.modifyPwd (修改密码) Exception", e);
-//            respData.setResultInfo(new ResultInfo(ResultCode.CODE_999, msa.getMessage(ResultCode.CODE_999)));
-//        }
-//        LOGGER.info("UserController.modifyPwd (修改密码) Response parameter:结束");
-//        return respData;
-//    }
 
     /*//客服回复评论
     @PostMapping("/comment/replayComment")
